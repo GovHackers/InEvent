@@ -9,7 +9,7 @@ import domain.GPSCoords;
  */
 public class EventbriteEvent {
 
-    public int id;
+    public long id;
     public String resource_uri;
     public TextHtml name;
     public TextHtml description;
