@@ -1,0 +1,108 @@
+/* based on semantic.gs */
+
+/* vars which can be overwritten */
+@min-width: 960;
+@columns: 12;
+@gutter-width: 20;
+
+
+@column-width: (@min-width / @columns) - @gutter-width;
+@gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
+
+/* Set @total-width to 100% for a fluid layout */
+/* these both seem to have the same outcome */
+//@total-width: @gridsystem-width;
+@total-width: 100%;
+
+/* Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html */
+@correction: 0.5 / @min-width * 100 * 1%;
+
+/* The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix {
+	*zoom:1;
+
+	&:before,
+	&:after {
+		content:"";
+		display:table;
+	}
+	&:after {
+		clear:both;
+	}
+}
+
+
+/* GRID */
+
+body {
+	width: 100%;
+	.clearfix;
+}
+
+.row(@columns:@columns,@gutter:both) {
+	display: block;
+	.clearfix;
+
+	width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width);
+	*width: @total-width*((@gutter-width + @gridsystem-width)/@gridsystem-width)-@correction;
+	margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1);
+	*margin: 0 @total-width*(((@gutter-width*.5)/@gridsystem-width)*-1)-@correction;
+}
+
+
+
+/* gutters can be specified */
+.column(@x,@gutter:both,@columns:@columns) {
+	display: inline;
+	float: left;
+	.cGutters(@gutter);
+}
+.cGutters(none) {
+	width: @total-width*((((@gutter-width+@column-width)*@x)) / @gridsystem-width);
+	*width: @total-width*((((@gutter-width+@column-width)*@x)) / @gridsystem-width)-@correction;
+	margin: 0;
+	*margin: 0;
+}
+.cGutters(left) {
+	width: @total-width*((((@gutter-width+@column-width)*@x)-(@gutter-width*.5)) / @gridsystem-width);
+	*width: @total-width*((((@gutter-width+@column-width)*@x)-(@gutter-width*.5)) / @gridsystem-width)-@correction;
+	margin-left: @total-width*((@gutter-width*.5)/@gridsystem-width);
+	*margin-left: @total-width*((@gutter-width*.5)/@gridsystem-width)-@correction;
+}
+.cGutters(right) {
+	width: @total-width*((((@gutter-width+@column-width)*@x)-(@gutter-width*.5)) / @gridsystem-width);
+	*width: @total-width*((((@gutter-width+@column-width)*@x)-(@gutter-width*.5)) / @gridsystem-width)-@correction;
+	margin-right: @total-width*((@gutter-width*.5)/@gridsystem-width);
+	*margin-right: @total-width*((@gutter-width*.5)/@gridsystem-width)-@correction;
+}
+.cGutters(both) {
+	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+	*width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width)-@correction;
+	margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width);
+	*margin: 0 @total-width*((@gutter-width*.5)/@gridsystem-width)-@correction;
+}
+
+
+
+
+
+
+
+.push(@offset:1) {
+	margin-left: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
+}
+.pull(@offset:1) {
+	margin-right: @total-width*(((@gutter-width+@column-width)*@offset) / @gridsystem-width) + @total-width*((@gutter-width*.5)/@gridsystem-width);
+}
+
+
+
+
+/* adding responsive top/bottom margin functionality */
+@respmargin: (@total-width*((@gutter-width*.5)/@gridsystem-width))*2;
+
+/* adding responsive height based on column # functionality */
+.height(@x) {
+	padding-bottom: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @gridsystem-width);
+	position: relative;
+}
