@@ -1,4 +1,5 @@
 .idea/
+data/
 inevent.iml
 spark-core.iml
 InEvent.iml
