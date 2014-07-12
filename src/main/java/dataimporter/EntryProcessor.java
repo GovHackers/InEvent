@@ -85,7 +85,7 @@ public class EntryProcessor {
 
     private void generateEventsFromDates() {
         vEvents = new LinkedList<VEvent>();
-        for(String date : getDates()) {
+        for(Long date : getDates()) {
             VEvent vEvent = new VEvent();
 
             vEvent.setEventDate(date);
@@ -184,18 +184,18 @@ public class EntryProcessor {
         return getItemValuesInEntry("phone").get(0);
     }
 
-    private List<String> getDates() {
-        List<String> dates = new LinkedList<String>();
+    private List<Long> getDates() {
+        List<Long> dates = new LinkedList<Long>();
         for (String dateString : getItemValuesInEntry("eventDate")) {
-            try {
-                DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH);
-                dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+10"));
+                try {
+                    DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH);
+                    dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+10"));
 
-                String date = dateFormat.parse(dateString).toString();
-                dates.add(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+                    long date = dateFormat.parse(dateString).getTime();// / 1000; // Unit time is in seconds
+                    dates.add(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
         }
         return dates;
     }
