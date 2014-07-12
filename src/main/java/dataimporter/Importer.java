@@ -33,8 +33,11 @@ public class Importer {
         TagsParser tagsParser = new TagsParser();
 
         //List<VEvent> listOfEvents = getVEventsFromRSS("http://10.106.100.227:8080/GovHack/InEvent/eventsrss.xml");
+        System.out.println("Importing events from Events Victoria...");
         List<VEvent> listOfEvents = getVEventsFromRSS("http://www.eventsvictoria.com/distributionservice/rss.xml");
+        System.out.println("Done. Now importing events from Eventbrite...");
         listOfEvents.addAll(getVEventsFromEventbrite());
+        System.out.println("Done.");
 
         BulkIndexer bulkIndexer = new BulkIndexer();
         bulkIndexer.indexEvents(listOfEvents);
