@@ -79,6 +79,7 @@ public class Importer {
                 vEvent.setUrl(event.resource_uri);
                 vEvent.setDescription(event.description.text);
                 vEvent.setCategory("EVENTBRITE");
+                vEvent.setIneventCategory("EVENTBRITE");
                 vEvent.setType("EVENTBRITE");
 
                 List<String> tags = new LinkedList<String>();
