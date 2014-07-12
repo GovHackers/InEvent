@@ -59,7 +59,7 @@ public class Importer {
     private static List<VEvent> getVEventsFromEventbrite() {
         List<VEvent> eventList = new LinkedList<VEvent>();
         try {
-            String oAuthToken = (new PropertiesConfiguration("eventbrite-key.properties")).getString("api-key");
+            String oAuthToken = (new PropertiesConfiguration("eventbrite-key.properties")).getString("oauth-token");
             EventbriteApi eventbriteApi = new EventbriteApi(oAuthToken);
 
             for (EventbriteEvent event : eventbriteApi.getBasicEventsJson("melbourne", "20km", false)) {
