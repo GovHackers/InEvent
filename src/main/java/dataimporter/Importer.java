@@ -17,10 +17,11 @@ import java.util.List;
 import domain.VEvent;
 
 public class Importer {
+
     public static void main(String[] args) {
 
         //TODO: Send this off to the DB
-        List<VEvent> listOfEvents = getVEventsFromRSS();
+        List<VEvent> listOfEvents = getVEventsFromRSS("http://www.eventsvictoria.com/distributionservice/rss.xml");
     }
 
     private static List<VEvent> getVEventsFromRSS(String rssURL) {

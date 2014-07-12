@@ -2,8 +2,11 @@ package dataimporter;
 
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import domain.VEvent;
+import org.jdom.Element;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EntryProcessor {
@@ -21,15 +24,22 @@ public class EntryProcessor {
     }
 
     private void generateEventsFromDates() {
-        for(String date : getDates()) {
+        for(Date date : getDates()) {
             VEvent vEvent = new VEvent();
 
-            //vEvent.setEventDate(Date(date));
+            vEvent.setEventDate(date);
         }
     }
 
-    private List<String> getDates() {
-        // TODO
+    private List<Date> getDates() {
+        System.out.println("-----------");
+        List<String> dates = new LinkedList<String>();
+        for (Element e : (ArrayList<Element>)entry.getForeignMarkup()) {
+            if (e.getName().equals("myEvents:eventDate")) {
+                dates.add(e.getText());
+                System.out.println(e.getText());
+            }
+        }
         return null;
     }
 
@@ -38,6 +48,6 @@ public class EntryProcessor {
     }
 
     private List<SyndEntryImpl> getInChildren(String elementName) {
-
+        return null;
     }
 }
