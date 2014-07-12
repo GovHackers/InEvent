@@ -1,4 +1,4 @@
-var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation'] );
+var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation', 'checklist-model'] );
 
 
 inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geolocation ) {
@@ -6,19 +6,17 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
 
     events: [],
 
-    getEvents: function(i) {
+    getEvents: function(i, excats) {
       var _this = this;
 
       geolocation.getLocation().then(function(data){
          var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i);
+        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
+//        var eventData = $http.get('events.json');
         eventData.then( function( result ) {
 
           angular.forEach(result.data, function( value, key ) {
-
-            console.log(value.venue.name);
-            console.log(_this);
 
             _this.events.push({
               'title': value.title,
@@ -67,6 +65,38 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
 
 inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', function( $scope, $timeout, EventFactory ) {
 
+  $scope.categories = [
+    "Sports",
+    "Live Music",
+    "Exhibitions and Shows",
+    "Food & Wine",
+    "Performing Arts",
+    "Markets",
+    "Art & Exhibitions",
+    "Community",
+    "Gardens & Agriculture",
+    "Lifestyle",
+    "Festivals and Celebrations",
+    "Shopping"
+  ];
+  $scope.categoryModel = {
+    excats: ["Sports",
+      "Live Music",
+      "Exhibitions and Shows",
+      "Food & Wine",
+      "Performing Arts",
+      "Markets",
+      "Art & Exhibitions",
+      "Community",
+      "Gardens & Agriculture",
+      "Lifestyle",
+      "Festivals and Celebrations",
+      "Shopping"]
+  };
+  $scope.excats = function() {
+    return _.difference($scope.categories, $scope.categoryModel.excats);
+  };
+
   $scope.drawer = false;
 
   $scope.drawerOpen = function() {
@@ -91,7 +121,9 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
     if( $scope.expanded ) $scope.expand();
 
-    EventFactory.getEvents($scope.i);
+    console.log($scope.categoryModel);
+
+    EventFactory.getEvents($scope.i, $scope.excats());
     $scope.events = EventFactory.events;
 
   };
@@ -116,8 +148,9 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
 
 
-  EventFactory.getEvents($scope.i);
+  EventFactory.getEvents($scope.i, $scope.excats());
   $scope.events = EventFactory.events;
 
 
 }]);
+

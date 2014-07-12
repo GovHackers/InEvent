@@ -14,25 +14,12 @@
 <body data-ng-controller="mainController"
       data-ng-class="{open:drawer}">
 
-  <div id="drawer">
+  <div id="drawer" data-ng-class="{loading:loading}">
 
-    <ul>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-      <li>Item</li>
-    </ul>
+    <div class="title">Filter Categories</div>
+    <label ng-repeat="category in categories" data-ng-class="{checked:categoryModel.excats.indexOf(category) !== -1}">
+      <input type="checkbox" checklist-model="categoryModel.excats" checklist-value="category"> {{category}}
+    </label>
 
   </div>
 
@@ -128,13 +115,15 @@
     <div id="selection">
 
       <div id="no">
-        <i class="fa fa-paper-plane"
+        <span>no</span>
+        <i class="fa fa-caret-square-o-left"
            data-ng-click="reject()"></i>
       </div>
 
       <div id="yes"
            data-ng-if="!expanded">
-        <i class="fa fa-paper-plane"
+        <span>yes</span>
+        <i class="fa fa-caret-square-o-right"
            data-ng-click="save()"></i>
       </div>
 
@@ -143,7 +132,10 @@
 
     <div id="btmBar"
          data-ng-click="expand()">
-      <i class="fa fa-expand"></i>
+      <i data-ng-if="!expanded"
+         class="fa fa-level-down"></i>
+      <i data-ng-if="expanded"
+         class="fa fa-level-up"></i>
     </div>
 
     <div id="shield"
@@ -154,9 +146,11 @@
 
 
 <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="lib/underscore/underscore.js"></script>
 <script type="text/javascript" src="lib/angular-touch/angular-touch.js"></script>
 <script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="lib/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+<script type="text/javascript" src="lib/checklist-model/checklist-model.js"></script>
 <script type="text/javascript" src="app/main.js"></script>
 
 

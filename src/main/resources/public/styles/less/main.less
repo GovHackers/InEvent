@@ -85,19 +85,43 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: @dark + 20%;
+  background-color: @dark;
 
   #drawer {
     position: absolute;
     display: block;
     height: 100%;
     width: @drawerW;
+    border-right: 3px solid black;
 
     top: @topBar;
     left: 0;
     bottom: 0;
 
     padding-bottom: 32px; //required to account for the browser's bar
+
+    .title {
+      color: white;
+      font-size: 20px;
+    }
+
+    label {
+      background-color: @dark;
+      color: white;
+      display: block;
+      padding: 5px;
+      margin-bottom: 1px;
+      font-size: 18px;
+
+      &.checked {
+        background-color: white;
+        color: black;
+      }
+
+      input {
+        display: none;
+      }
+    }
 
 
   }
@@ -215,7 +239,7 @@ body {
 
 //  padding: 10px;
 
-  .transition(all,0.15s,linear,0s);
+  .transition(all,0.3s,ease-in-out,0s);
 
 
 
@@ -331,10 +355,11 @@ body {
 }
 
 #acceptOver {
-  background-color: green;
+//  background-color: green;
 }
 #rejectOver {
-  background-color: red;
+//  background-color: red;
+  background-color: @dark;
 }
 
 
@@ -347,13 +372,8 @@ body {
   left: 15px;
   right: 15px;
 
-  height: @btmBar * 2;
+  height: @btmBar;
 
-  i {
-    border: 1px solid @white;
-    border-radius: 5px;
-    padding: 15px;
-  }
 
 
   #no {
@@ -366,6 +386,7 @@ body {
     color: @white;
 
     text-align: left;
+
 
     //      opacity: .3;
 //    background-color: #E82C0C;

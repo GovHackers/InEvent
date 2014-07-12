@@ -2023,17 +2023,37 @@ body {
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: #1c1c1c;
+  background-color: #080808;
 }
 body #drawer {
   position: absolute;
   display: block;
   height: 100%;
   width: 250px;
+  border-right: 3px solid black;
   top: 40px;
   left: 0;
   bottom: 0;
   padding-bottom: 32px;
+}
+body #drawer .title {
+  color: white;
+  font-size: 20px;
+}
+body #drawer label {
+  background-color: #080808;
+  color: white;
+  display: block;
+  padding: 5px;
+  margin-bottom: 1px;
+  font-size: 18px;
+}
+body #drawer label.checked {
+  background-color: white;
+  color: black;
+}
+body #drawer label input {
+  display: none;
 }
 body #main {
   position: absolute;
@@ -2128,10 +2148,10 @@ body.open #shield {
   height: 200%;
   background-color: pink;
   color: #ffffff;
-  -webkit-transition: all 0.15s linear 0s;
-  -moz-transition: all 0.15s linear 0s;
-  -o-transition: all 0.15s linear 0s;
-  transition: all 0.15s linear 0s;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  -o-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 #content #contentTop {
   height: 50%;
@@ -2220,23 +2240,15 @@ body.open #shield {
     opacity: 0;
   }
 }
-#acceptOver {
-  background-color: green;
-}
 #rejectOver {
-  background-color: red;
+  background-color: #080808;
 }
 #selection {
   position: absolute;
   bottom: 60px;
   left: 15px;
   right: 15px;
-  height: 120px;
-}
-#selection i {
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  padding: 15px;
+  height: 60px;
 }
 #selection #no {
   float: left;
