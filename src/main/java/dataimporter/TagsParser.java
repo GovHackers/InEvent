@@ -12,9 +12,6 @@ public class TagsParser {
 
     public TagsParser() {
         //parseTypesFile();
-
-
-
         parseTagsFile();
     }
 
