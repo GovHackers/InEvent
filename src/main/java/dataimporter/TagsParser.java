@@ -10,6 +10,7 @@ public class TagsParser {
 
     public TagsParser() {
         parseTagsFile();
+        System.out.println("tagsData: " + tagsData.size());
     }
 
     private void parseTagsFile() {
@@ -42,7 +43,7 @@ public class TagsParser {
         List<String[]> result = new ArrayList<String[]>();
 
         for (String[] tagsDataLine : tagsData) {
-            if (tagsDataLine[0] == tag)
+            if (tagsDataLine[0].contentEquals(tag))
                 return tagsDataLine[1];
         }
 
