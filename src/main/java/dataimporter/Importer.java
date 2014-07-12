@@ -11,25 +11,25 @@ import org.jdom.Element;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import domain.VEvent;
 
 public class Importer {
     public static void main(String[] args) {
-        getVEventsFromRSS();
+
+        //TODO: Send this off to the DB
+        List<VEvent> listOfEvents = getVEventsFromRSS();
     }
 
     private static List<VEvent> getVEventsFromRSS() {
         SyndFeed f = GetRSSFeed("http://www.eventsvictoria.com/distributionservice/rss.xml");
 
-        ArrayList<VEvent> eventList = new ArrayList<VEvent>(f.getEntries().size());
+        List<VEvent> eventList = new LinkedList<VEvent>();
 
         for (SyndEntryImpl entry : (List<SyndEntryImpl>)f.getEntries()) {
-            EntryProcessor processor = new EntryProcessor(entry);
-
-            // Use EntryProcessor to make a VEvent object and add it to list
-
+            eventList.addAll(new EntryProcessor(entry).getVEvents());
         }
 
         return eventList;
