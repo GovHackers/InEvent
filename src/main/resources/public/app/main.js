@@ -1,51 +1,58 @@
-var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate'] );
+var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation'] );
 
 
-inEvent.factory( 'EventFactory', [ '$http', function( $http ) {
+inEvent.factory( 'EventFactory', [ '$scope', '$http', function( $scope, $http, geolocation ) {
   return {
 
     events: [],
 
     getEvents: function() {
       var _this = this;
-      var eventData = $http.get('events.json');
-      eventData.then( function( result ) {
-        angular.forEach(result.data, function( value, key ) {
 
-          console.log(value.venue.name);
-          console.log(_this);
+      geolocation.getLocation().then(function(data){
+        $scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-          _this.events.push({
-            'title': value.title,
-            'description': value.description,
-            'date': value.eventDate,
+        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + $scope.coords.lat + '&lon=' + $scope.coords.long + '&query_set=' + $scope.index);
+        eventData.then( function( result ) {
+          angular.forEach(result.data, function( value, key ) {
 
-            'type': value.type,
-            'category': value.category,
-            'tags': value.tag,
+            console.log(value.venue.name);
+            console.log(_this);
 
-            'images': value.imageURLs,
+            _this.events.push({
+              'title': value.title,
+              'description': value.description,
+              'date': value.eventDate,
 
-            'priceKnown': value.priceKnown,
-            'isFree': value.isFree,
-            'price': value.price,
+              'type': value.type,
+              'category': value.category,
+              'tags': value.tag,
 
-            'venue': value.venue,
-            'location': value.location,
+              'images': value.imageURLs,
 
-            'train': value.nearestTrain,
-            'tram': value.nearestTram,
-            'bus': value.nearestBus,
+              'priceKnown': value.priceKnown,
+              'isFree': value.isFree,
+              'price': value.price,
 
-            'link': value.link, //events victoria - use as second preference
-            'url': value.url, //event website - use as first preference
-            'email': value.contactEmail,
-            'phone': value.contactPhone
+              'venue': value.venue,
+              'location': value.location,
+
+              'train': value.nearestTrain,
+              'tram': value.nearestTram,
+              'bus': value.nearestBus,
+
+              'link': value.link, //events victoria - use as second preference
+              'url': value.url, //event website - use as first preference
+              'email': value.contactEmail,
+              'phone': value.contactPhone
+            });
           });
         });
-      });
-      eventData.error(function(data, status, headers, config) {
-        console.log(status);
+        eventData.error(function(data, status, headers, config) {
+          console.log(status);
+        });
+
+
       });
 
     }
@@ -73,6 +80,7 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
     $scope.drawer = !$scope.drawer;
   };
 
+  $scope.index = 0;
   $scope.reject = function() {
     $scope.action = 'reject';
     $timeout( function() {
@@ -85,7 +93,7 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
     $scope.events = EventFactory.events;
 
 
-
+    $scope.index ++;
   };
 
   $scope.save = function() {

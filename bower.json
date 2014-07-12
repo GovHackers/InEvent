@@ -1,0 +1,12 @@
+{
+    "name": "InEvent",
+    "description": "GovHack2014",
+    "version": "1.0.0",
+    "dependencies": {
+        "angular": "1.2.20",
+        "angular-touch": "patrickmarabeas/angular-touch.js",
+        "angular-animate": "1.2.20",
+        "angularjs-geolocation": "0.1.1",
+        "fontawesome": "4.1.0"
+    }
+}
