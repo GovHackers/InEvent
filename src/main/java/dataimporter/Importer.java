@@ -23,8 +23,8 @@ public class Importer {
         List<VEvent> listOfEvents = getVEventsFromRSS();
     }
 
-    private static List<VEvent> getVEventsFromRSS() {
-        SyndFeed f = GetRSSFeed("http://www.eventsvictoria.com/distributionservice/rss.xml");
+    private static List<VEvent> getVEventsFromRSS(String rssURL) {
+        SyndFeed f = GetRSSFeed(rssURL);
 
         List<VEvent> eventList = new LinkedList<VEvent>();
 
