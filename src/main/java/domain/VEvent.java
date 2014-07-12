@@ -22,12 +22,22 @@ public class VEvent {
     private List<String> tag;
     private Date eventDate;
     private Venue venue;
-    private List<String> imageUrl;
+    private List<String> imageUrls;
     private String contactPhone;
     private String contactEmail;
     private boolean isFree;
     private boolean priceKnown;
     private double price;
+    private String url;
+    private String type;
+
+    public String getType() { return type; }
+
+    public void setType(String type) { this.type = type; }
+
+    public String getUrl() { return url; }
+
+    public void setUrl(String url) { this.url = url; }
 
     public int getId() {
         return id;
@@ -133,9 +143,9 @@ public class VEvent {
 
     public void setBookingAgencyLogo(String bookingAgencyLogo) { this.bookingAgencyLogo = bookingAgencyLogo; }
 
-    public void setImageUrl(List<String> imageUrl) { this.imageUrl = imageUrl; }
+    public void setImageUrls(List<String> imageUrls) { this.imageUrls = imageUrls; }
 
-    public List<String> getImageUrl() { return imageUrl; }
+    public List<String> getImageUrls() { return imageUrls; }
 
     public String toJson(){
         Gson gson = new Gson();

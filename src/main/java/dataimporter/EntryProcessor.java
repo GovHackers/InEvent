@@ -29,10 +29,16 @@ public class EntryProcessor {
             event.setCategory(getCategory());
             event.setTag(getTags());
             event.setVenue(getVenue());
+            event.setImageUrls(getImageUrls());
+            event.setContactPhone(getContactPhone());
+            event.setContactEmail(getContactEmail());
+            event.setUrl(getUrl());
+            event.setFree(getFreeEntry());
+            event.setType(getType());
 
             // Price data not available yet in the data set
-            event.setPrice(0.0);
-            event.setPriceKnown(false);
+            event.setPrice(getPrice());
+            event.setPriceKnown(getPriceKnown());
         }
 
     }
@@ -50,6 +56,44 @@ public class EntryProcessor {
 
             vEvents.add(vEvent);
         }
+    }
+
+    private String getUrl() {
+        return getItemValueInEntry("url");
+    }
+
+    private boolean getPriceKnown() {
+        if(getFreeEntry() == false)
+            return false;
+        else
+            return true;
+    }
+
+    private double getPrice() {
+        // TODO - Currently no data for this.
+        return 0.0;
+    }
+
+    private boolean getFreeEntry() {
+        return Boolean.valueOf(getItemValueInEntry("freeEntry"));
+    }
+
+    private String getType() {
+        return getItemValueInEntry("type");
+    }
+
+    private String getContactEmail() {
+        return getItemValueInEntry("email");
+    }
+
+    private LinkedList<String> getImageUrls() {
+        List<Element> multimediaElements = getItemElementsInEntry("multimedia");
+        LinkedList<String> imageUrls = new LinkedList<>();
+
+        multimediaElements.forEach((image) ->
+                imageUrls.add(image.getChild("serverPath").getValue()));
+
+        return imageUrls;
     }
 
     private Venue getVenue() {
@@ -93,6 +137,10 @@ public class EntryProcessor {
         return Integer.valueOf(entry.getUri());
     }
 
+    private String getContactPhone() {
+        return getItemValuesInEntry("phone").get(0);
+    }
+
     private List<Date> getDates() {
         List<Date> dates = new LinkedList<Date>();
         for (String dateString : getItemValuesInEntry("eventDate")) {
@@ -108,6 +156,10 @@ public class EntryProcessor {
 
     private String getTitle() {
         return entry.getTitle();
+    }
+
+    private String getItemValueInEntry(String itemName) {
+        return getItemValuesInEntry(itemName).get(0);
     }
 
     private List<String> getItemValuesInEntry(String elementName) {
