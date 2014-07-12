@@ -18,10 +18,8 @@ public class Importer {
 
         SyndFeed f = GetRSSFeed("http://www.eventsvictoria.com/distributionservice/rss.xml");
         for (SyndEntryImpl entry : (List<SyndEntryImpl>)f.getEntries()) {
-            for (Element element : (ArrayList<Element>)entry.getForeignMarkup()) {
-                System.out.println("NAME: "+element.getName());
-                System.out.println("VALUE: "+element.getValue());
-            }
+            EntryProcessor processor = new EntryProcessor(entry);
+            System.out.println(processor.getTitle());
         }
     }
 
