@@ -71,7 +71,7 @@ public class EventbriteApi {
         EventbriteResults currentResults = gson.fromJson(jsonData, EventbriteResults.class);
         Set<EventbriteEvent> allEvents = new HashSet<EventbriteEvent>();
         allEvents.addAll(currentResults.getEvents());
-        System.out.println(currentResults.getPagination().getPage_number()+"of"+currentResults.getPagination().getPage_count());
+        System.out.println("Got page "+currentResults.getPagination().getPage_number()+" of "+currentResults.getPagination().getPage_count());
         if (currentResults.getPagination().getPage_number() < currentResults.getPagination().getPage_count()) {
             allEvents.addAll(getBasicEventsJson(searchAddress, searchRadius, popular, page+1));
             return allEvents;
