@@ -75,8 +75,8 @@ public class Importer {
 
                 vEvent.setId(event.id);
                 vEvent.setTitle(event.name.text);
-                vEvent.setLink(event.resource_uri);
-                vEvent.setUrl(event.resource_uri);
+                vEvent.setLink("http://www.eventbrite.com.au/e/"+vEvent.getId());
+                vEvent.setUrl("http://www.eventbrite.com.au/e/"+vEvent.getId());
                 vEvent.setDescription(event.description.text);
                 vEvent.setCategory("EVENTBRITE");
                 vEvent.setIneventCategory("EVENTBRITE");
