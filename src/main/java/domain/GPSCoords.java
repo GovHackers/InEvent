@@ -19,7 +19,7 @@ public class GPSCoords {
         lon = 0;
     }
 
-    public String getLocation() { return lat + "," + lon; }
+    public String getLocation() { return String.valueOf(lat) + "," + String.valueOf(lon); }
 
     public double getLat() {
         return lat;
