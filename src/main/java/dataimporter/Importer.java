@@ -17,11 +17,11 @@ import domain.VEvent;
 
 public class Importer {
     public static void main(String[] args) {
-        getVEventsFromRSS();
+        getVEventsFromRSS("http://www.eventsvictoria.com/distributionservice/rss.xml");
     }
 
-    private static List<VEvent> getVEventsFromRSS() {
-        SyndFeed f = GetRSSFeed("http://www.eventsvictoria.com/distributionservice/rss.xml");
+    private static List<VEvent> getVEventsFromRSS(String rssURL) {
+        SyndFeed f = GetRSSFeed(rssURL);
 
         ArrayList<VEvent> eventList = new ArrayList<VEvent>(f.getEntries().size());
 
