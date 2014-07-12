@@ -1,5 +1,7 @@
 package domain;
 
+import com.google.gson.Gson;
+
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +24,7 @@ public class VEvent {
     private String contactPhone;
     private String contactEmail;
     private boolean isFree;
+    private Gson gson;
 
     public int getId() {
         return id;
@@ -117,5 +120,10 @@ public class VEvent {
 
     public void setFree(boolean isFree) {
         this.isFree = isFree;
+    }
+
+    public String toJson(){
+        gson = new Gson();
+        return gson.toJson(this);
     }
 }
