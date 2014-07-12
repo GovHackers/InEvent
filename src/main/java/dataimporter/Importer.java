@@ -67,7 +67,7 @@ public class Importer {
             String oAuthToken = (new PropertiesConfiguration("eventbrite-key.properties")).getString("oauth-token");
             EventbriteApi eventbriteApi = new EventbriteApi(oAuthToken);
 
-            Set<EventbriteEvent> ebResults = eventbriteApi.getBasicEventsJson("melbourne", "20km", false);
+            Set<EventbriteEvent> ebResults = eventbriteApi.getBasicEventsJson("melbourne", "50km", true);
             System.out.println("Eventbrite events fetched. Performing postprocessing on Eventbrite events...");
 
             for (EventbriteEvent event : ebResults) {
