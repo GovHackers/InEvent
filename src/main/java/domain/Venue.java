@@ -35,4 +35,20 @@ public class Venue extends GPSCoords {
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
     }
+
+    public String getSuburb() {
+        return suburb;
+    }
+
+    public void setSuburb(String suburb) {
+        this.suburb = suburb;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
 }
