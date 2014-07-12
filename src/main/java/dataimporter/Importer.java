@@ -106,7 +106,11 @@ public class Importer {
                 }
 
                 List<String> imageList = new LinkedList<String>();
-                imageList.add("http://blogmedia.eventbrite.com/wp-content/uploads/event-brite.jpeg");
+                if (event.logo_url != null && !event.logo_url.isEmpty()) {
+                    imageList.add(event.logo_url);
+                } else {
+                    imageList.add("http://blogmedia.eventbrite.com/wp-content/uploads/event-brite.jpeg");
+                }
                 vEvent.setImageUrls(imageList);
                 vEvent.setPriceKnown(false); // TODO: Get proper pricing from eventbrite
                 vEvent.setFree(false);

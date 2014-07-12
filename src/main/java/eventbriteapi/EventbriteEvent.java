@@ -18,6 +18,7 @@ public class EventbriteEvent {
     public Category category;
     public Format format;
     public Venue venue;
+    public String logo_url;
 
     public GPSCoords getCoords() {
         GPSCoords coords = new GPSCoords();
