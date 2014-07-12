@@ -1,14 +1,10 @@
 package repository;
 
-import builder.VEventBuilder;
-import domain.VEvent;
 import factory.ElasticsearchClientFactory;
-import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.search.SearchHit;
 
-import javax.naming.directory.SearchResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
