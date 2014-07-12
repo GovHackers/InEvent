@@ -55,7 +55,7 @@ public class PTVApi {
 
     public PTVResultsSet getNearestTransport(GPSCoords location) {
         Gson gson = new Gson();
-        PTVResultsSet results = null;
+        PTVResultsSet results = new PTVResultsSet();
         try {
             results = gson.fromJson(readFromUrl(getReqUrl("/v2/nearme/latitude/" + String.valueOf(location.getLat()) + "/longitude/" + String.valueOf(location.getLon()))), PTVResultsSet.class);
         } catch (IOException e) {
