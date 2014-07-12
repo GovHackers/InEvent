@@ -19,6 +19,8 @@ public class GPSCoords {
         lon = 0;
     }
 
+    public String getLocation() { return lat + "," + lon; }
+
     public double getLat() {
         return lat;
     }
