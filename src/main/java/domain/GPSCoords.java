@@ -43,7 +43,7 @@ public class GPSCoords {
     public double distanceFrom(GPSCoords point) {
         double R = 6371; // km
         double dLat = deg2rad((point.getLat()-this.getLat()));
-        double dLon = deg2rad((point.getLat()-this.getLat()));
+        double dLon = deg2rad((point.getLon()-this.getLon()));
         double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
                 Math.cos(deg2rad(this.getLat())) * Math.cos(deg2rad(point.getLat())) *
                         Math.sin(dLon/2) * Math.sin(dLon/2);
@@ -58,5 +58,11 @@ public class GPSCoords {
      */
     private double deg2rad(double deg) {
         return (deg * Math.PI / 180.0);
+    }
+
+    public static void main(String[] args) {
+        GPSCoords here = new GPSCoords(38.898556, -77.037852);
+        GPSCoords there = new GPSCoords(38.897147, -77.043934);
+        System.out.println(here.distanceFrom(there));
     }
 }
