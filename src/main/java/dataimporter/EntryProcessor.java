@@ -123,7 +123,7 @@ public class EntryProcessor {
     private List<String> getTags() {
         List<String> tags = new LinkedList<String>();
         for (String tag : getItemValuesInEntry("tags")) {
-            tags.add(tag);
+            tags.add(TagsParser.getTagLabel(tag));
         }
         return tags;
     }
