@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" data-ng-app="inEvent">
+<head lang="en">
+  <title>InEvent</title>
+  <meta name="description" content="GovHack2014" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--[if lt IE 8]><script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.2.6/json3.min.js"></script><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+  <!--<link rel="stylesheet" type="text/css" href="lib/fontawesome/font-awesome.min.css" />-->
+  <link rel="stylesheet" type="text/css" href="styles/main.css" />
+</head>
+<body data-ng-controller="mainController"
+      data-ng-class="{open:drawer}">
+
+  <div id="drawer">
+
+    <ul>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+    </ul>
+
+  </div>
+
+  <div id="main">
+
+    <div id="topBar"
+         data-ng-click="drawerToggle()">
+      <div id="menuBtn">
+        <i class="fa fa-bars"></i>
+      </div>
+      <h1>inEvent</h1>
+    </div>
+
+    <div id="content"
+         data-ng-swipe-left="reject()"
+         data-ng-swipe-right="save()">
+
+      <section id="contentTop">
+
+        <!--<img id="imageBG" src="images/background.jpg" />-->
+
+        <div class="wrapper">
+
+          <div id="test2"></div>
+
+          <span class="interest">are you interested in...</span>
+
+          <div id="icons">
+            <span>free</span>
+            <div class="ptv train"></div>
+            <div class="ptv tram"></div>
+            <div class="ptv bus"></div>
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+          <h1>Luna Park</h1>
+
+          <span>{{events[0].venue.name}}</span>
+
+        </div>
+
+
+      </section>
+
+      <section id="contentBottom">
+        <p>title: {{events[0].title}}</p>
+        <p>description: {{events[0].description}}</p>
+        <p>date: {{events[0].date}}</p>
+        <p>type: {{events[0].type}}</p>
+        <p>category: {{events[0].category}}</p>
+        <p>tags:
+          <span data-ng-repeat="tag in events[0].tags">{{tag}} </span>
+        </p>
+        <p>images: fudge the url</p>
+        <p>priceKnown: {{events[0].priceKnown}}</p>
+        <p>isFree: {{events[0].isFree}}</p>
+        <p>price: {{events[0].price}}</p>
+        <p>venue: {{events[0].venue}}</p>
+        <p>location: {{events[0].location}}</p>
+        <p>train: {{events[0].nearestTrain}}</p>
+        <p>tram: {{events[0].nearestTram}}</p>
+        <p>bus: {{events[0].nearestBus}}</p>
+
+
+
+        <!--'link': value.link, //events victoria - use as second preference-->
+        <!--'url': value.url, //event website - use as first preference-->
+        <!--'email': value.contactEmail,-->
+        <!--'phone': value.contactPhone-->
+
+      </section>
+
+      <!--<h1>This is some event</h1>-->
+
+      <!--<time datetime="">Today</time>-->
+
+      <!--<p>Event description</p>-->
+
+
+
+    </div>
+
+
+
+    <div id="rejectOver" data-ng-if="action === 'reject'" data-overlay>
+      <!--<i class="fa fa-tick"></i>-->
+    </div>
+    <div id="acceptOver" data-ng-if="action === 'accept'" data-overlay></div>
+
+
+    <div id="selection">
+
+      <div id="no">
+        <i class="fa fa-paper-plane"
+           data-ng-click="reject()"></i>
+      </div>
+
+      <div id="yes"
+           data-ng-if="!expanded">
+        <i class="fa fa-paper-plane"
+           data-ng-click="save()"></i>
+      </div>
+
+    </div>
+
+
+    <div id="btmBar"
+         data-ng-click="expand()">
+      <i class="fa fa-expand"></i>
+    </div>
+
+    <div id="shield"
+         data-ng-click="drawerClose()"></div>
+
+  </div>
+
+
+
+<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="lib/angular-touch/angular-touch.js"></script>
+<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="app/main.js"></script>
+
+
+</body>
+</html>

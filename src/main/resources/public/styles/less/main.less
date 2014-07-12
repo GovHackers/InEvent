@@ -10,6 +10,15 @@
   box-sizing: border-box;
 }
 
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 audio, canvas, img, svg, video {
   vertical-align: middle;
 }
@@ -57,7 +66,7 @@ textarea {
 
 
 @topBar: 40px;
-@btmBar: 80px;
+@btmBar: 60px;
 
 @drawerW: 250px;
 
@@ -97,14 +106,14 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%; //massive performance increase for transition
-    width: 100%; //massive performance increase for transition
+    height: 100%;
+    width: 100%;
     .transition(all,0.1s,linear,0s);
     .transform( translate3d(0px,0px,0px) );
 
     background-color: red;
 
-    * { // improve transition performance
+    * {
       .transform( translateZ(0) );
     }
   }
@@ -130,6 +139,13 @@ body {
   &.open {
     #main {
       .transform( translate3d(@drawerW,0px,0px) );
+
+      #topBar {
+        h1 {
+          color: red;
+        }
+
+      }
     }
 
     #shield {
@@ -153,6 +169,8 @@ body {
 
   background-color: @dark;
   line-height: @topBar;
+
+  z-index: 100;
 
   #menuBtn {
     display: block;
@@ -183,79 +201,194 @@ body {
   top: @topBar;
   left: 0;
   bottom: @btmBar;
+//  bottom: 0;
   right: 0;
 
-  background-color: @white;
+  height: 200%;
 
-  #selection {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
 
-    height: 100px;
 
-    background-color: pink;
+//  overflow-y: scroll;
 
-    #no {
-      float: left;
-      width: 50%;
-      height: 100%;
-      background-color: red;
+  background-color: pink;
+  color: @white;
 
-      opacity: .1;
+//  padding: 10px;
+
+  .transition(all,0.15s,linear,0s);
+
+
+
+  #contentTop {
+//    position: absolute;
+//    top: @topBar;
+//    bottom: @btmBar;
+//    left: 0;
+//    right: 0;
+
+    height: 50%;
+
+
+
+    .wrapper {
+      padding: 15px;
     }
 
-    #yes {
-      float: right;
+    #icons {
 
-      width: 50%;
-      height: 100%;
-      background-color: green;
+      .ptv {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;
 
-      opacity: .1;
-    }
-  }
+        &.train {
+         background-image: url('images/iconTrain.png');
+        }
+        &.tram {
+         background-image: url('images/iconTram.png');
+        }
+        &.bus {
+         background-image: url('images/iconBus.png');
+        }
 
-  #acceptOver, #rejectOver {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
+      }
 
-    &.ng-enter {
-      -webkit-animation: fade .5s;
-      -moz-animation: fade .5s;
-      animation: fade .5s;
+
+
     }
 
-    @-webkit-keyframes fade {
-      0% { opacity: 0; }
-      50% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-    @-moz-keyframes fade {
-      0% { opacity: 0; }
-      50% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-    @keyframes fade {
-      0% { opacity: 0; }
-      50% { opacity: 1; }
-      100% { opacity: 0; }
-    }
 
   }
 
-  #acceptOver {
-    background-color: green;
+  #contentBottom {
+//    position: absolute;
+//    top: 100%;
+//    left: 0;
+//    right: 0;
+
+    padding-top: @topBar + 15px;
+    padding-bottom: @btmBar + 15px;
+
+//    min-height: 50%;
+
+    height: 50%;
+
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+
   }
-  #rejectOver {
-    background-color: red;
+
+  .interest {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 60px;
+    text-shadow: 2px 2px black;
+
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
   }
 }
+
+
+
+#acceptOver, #rejectOver {
+  position: absolute;
+  left: 0;
+  top: @topBar;
+  right: 0;
+  bottom: @btmBar;
+  opacity: 0;
+
+  &.ng-enter {
+    -webkit-animation: fade .5s;
+    -moz-animation: fade .5s;
+    animation: fade .5s;
+  }
+
+  @-webkit-keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @-moz-keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes fade {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+}
+
+#acceptOver {
+  background-color: green;
+}
+#rejectOver {
+  background-color: red;
+}
+
+
+
+
+
+#selection {
+  position: absolute;
+  bottom: @btmBar;
+  left: 15px;
+  right: 15px;
+
+  height: @btmBar * 2;
+
+  i {
+    border: 1px solid @white;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+
+  #no {
+    float: left;
+    width: 50%;
+    height: 100%;
+
+    font-family: 'fontawesome';
+    font-size: 30px;
+    color: @white;
+
+    text-align: left;
+
+    //      opacity: .3;
+//    background-color: #E82C0C;
+  }
+
+  #yes {
+    float: right;
+
+    width: 50%;
+    height: 100%;
+
+    font-family: 'fontawesome';
+    font-size: 30px;
+    color: @white;
+
+    text-align: right;
+
+    //      opacity: .3;
+//    background-color: #57FF6C;
+  }
+}
+
+
 
 #btmBar {
   height: @btmBar;
@@ -263,15 +396,25 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 100;
 
   background-color: @dark;
 
-  text-align: center;
+
+  text-align: right;
   line-height: @btmBar;
-  font-size: 25px;
+  font-size: 30px;
   color: @white;
+  padding: 0 15px;
+
+
 }
 
 
+
+.expand {
+  top: -100% !important;
+
+}
 
 

@@ -4,6 +4,7 @@ import controllers.ManditoryQueryParameterException;
 import static spark.Spark.after;
 import static spark.Spark.exception;
 import static spark.Spark.get;
+import static spark.SparkBase.staticFileLocation;
 
 public class Application {
 
@@ -18,5 +19,8 @@ public class Application {
         after(GET_RELEVANT_EVENTS, (request, response) -> {
             response.type("application/json");
         });
+
+        staticFileLocation("/public");
+
     }
 }

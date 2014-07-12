@@ -348,6 +348,14 @@ table {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 audio,
 canvas,
 img,
@@ -2073,6 +2081,9 @@ body.open #main {
   -o-transform: translate3d(250px, 0px, 0px);
   transform: translate3d(250px, 0px, 0px);
 }
+body.open #main #topBar h1 {
+  color: red;
+}
 body.open #shield {
   display: block;
 }
@@ -2087,6 +2098,7 @@ body.open #shield {
   left: 0;
   background-color: #080808;
   line-height: 40px;
+  z-index: 100;
 }
 #topBar #menuBtn {
   display: block;
@@ -2111,43 +2123,66 @@ body.open #shield {
   position: absolute;
   top: 40px;
   left: 0;
-  bottom: 80px;
+  bottom: 60px;
   right: 0;
-  background-color: #ffffff;
-}
-#content #selection {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100px;
+  height: 200%;
   background-color: pink;
+  color: #ffffff;
+  -webkit-transition: all 0.15s linear 0s;
+  -moz-transition: all 0.15s linear 0s;
+  -o-transition: all 0.15s linear 0s;
+  transition: all 0.15s linear 0s;
 }
-#content #selection #no {
-  float: left;
-  width: 50%;
-  height: 100%;
-  background-color: red;
-  opacity: .1;
+#content #contentTop {
+  height: 50%;
 }
-#content #selection #yes {
-  float: right;
-  width: 50%;
-  height: 100%;
-  background-color: green;
-  opacity: .1;
+#content #contentTop .wrapper {
+  padding: 15px;
 }
-#content #acceptOver,
-#content #rejectOver {
+#content #contentTop #icons .ptv {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+}
+#content #contentTop #icons .ptv.train {
+  background-image: url('images/iconTrain.png');
+}
+#content #contentTop #icons .ptv.tram {
+  background-image: url('images/iconTram.png');
+}
+#content #contentTop #icons .ptv.bus {
+  background-image: url('images/iconBus.png');
+}
+#content #contentBottom {
+  padding-top: 55px;
+  padding-bottom: 75px;
+  height: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#content .interest {
+  font-size: 20px;
+}
+#content h1 {
+  font-size: 60px;
+  text-shadow: 2px 2px black;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+#acceptOver,
+#rejectOver {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 40px;
   right: 0;
-  bottom: 0;
+  bottom: 60px;
   opacity: 0;
 }
-#content #acceptOver.ng-enter,
-#content #rejectOver.ng-enter {
+#acceptOver.ng-enter,
+#rejectOver.ng-enter {
   -webkit-animation: fade .5s;
   -moz-animation: fade .5s;
   animation: fade .5s;
@@ -2185,21 +2220,56 @@ body.open #shield {
     opacity: 0;
   }
 }
-#content #acceptOver {
+#acceptOver {
   background-color: green;
 }
-#content #rejectOver {
+#rejectOver {
   background-color: red;
 }
+#selection {
+  position: absolute;
+  bottom: 60px;
+  left: 15px;
+  right: 15px;
+  height: 120px;
+}
+#selection i {
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+}
+#selection #no {
+  float: left;
+  width: 50%;
+  height: 100%;
+  font-family: 'fontawesome';
+  font-size: 30px;
+  color: #ffffff;
+  text-align: left;
+}
+#selection #yes {
+  float: right;
+  width: 50%;
+  height: 100%;
+  font-family: 'fontawesome';
+  font-size: 30px;
+  color: #ffffff;
+  text-align: right;
+}
 #btmBar {
-  height: 80px;
+  height: 60px;
   width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 100;
   background-color: #080808;
-  text-align: center;
-  line-height: 80px;
-  font-size: 25px;
+  text-align: right;
+  line-height: 60px;
+  font-size: 30px;
   color: #ffffff;
+  padding: 0 15px;
+}
+.expand {
+  top: -100% !important;
 }
