@@ -1,5 +1,7 @@
 package eventbriteapi;
 
+import domain.GPSCoords;
+
 /**
  * Created by jrigby on 13/07/2014.
  *
@@ -7,6 +9,7 @@ package eventbriteapi;
  */
 public class EventbriteEvent {
 
+    public int id;
     public String resource_uri;
     public TextHtml name;
     public TextHtml description;
@@ -14,6 +17,14 @@ public class EventbriteEvent {
     public StartEndTime end;
     public CategoryFormat category;
     public CategoryFormat format;
+    public Venue venue;
+
+    public GPSCoords getCoords() {
+        GPSCoords coords = new GPSCoords();
+        coords.setLat(venue.latitude);
+        coords.setLon(venue.longitude);
+        return coords;
+    }
 
     public class TextHtml {
         public String text;

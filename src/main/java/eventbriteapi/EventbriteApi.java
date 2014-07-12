@@ -81,7 +81,7 @@ public class EventbriteApi {
     }
 
     public static void main(String[] args) {
-        EventbriteApi api = new EventbriteApi("API-KEY-GOES-HERE");
+        EventbriteApi api = new EventbriteApi("VFWBZRPDKWP4CN3XMQ6G");
         Set<EventbriteEvent> results = api.getBasicEventsJson("melbourne", "30km", true);
 
         for (EventbriteEvent e : results) {
