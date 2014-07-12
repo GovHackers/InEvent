@@ -28,6 +28,8 @@ public class EntryProcessor {
             VEvent vEvent = new VEvent();
 
             vEvent.setEventDate(date);
+
+            vEvents.add(vEvent);
         }
     }
 
