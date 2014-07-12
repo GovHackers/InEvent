@@ -1,5 +1,6 @@
 package repository;
 
+import domain.GPSCoords;
 import factory.ElasticsearchClientFactory;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -20,7 +21,7 @@ public class EventRepository {
         this.client = new ElasticsearchClientFactory().getInstance();
     }
 
-    public List<Map<String, Object>> getEvents(int setFrom){
+    public List<Map<String, Object>> getEvents(GPSCoords coords, int setFrom){
         List<Map<String, Object>> events = new ArrayList<>();
 
         SearchResponse response = client.prepareSearch(INDEX_NAME).setTypes(TYPE).setFrom(setFrom).setSize(1).execute().actionGet();
@@ -32,8 +33,8 @@ public class EventRepository {
 
     }
 
-    public List<Map<String, Object>> getEvents(){
-        return getEvents(0);
+    public List<Map<String, Object>> getEvents(GPSCoords coords){
+        return getEvents(coords, 0);
     }
 
 }

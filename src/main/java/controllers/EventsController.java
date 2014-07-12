@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
+import domain.GPSCoords;
 import factory.ElasticsearchClientFactory;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
@@ -22,13 +23,25 @@ public class EventsController {
         this.repository = new EventRepository();
     }
 
-    public String getEvents(){
+    public String getEvents() {
         Gson gson = new Gson();
-        return gson.toJson(repository.getEvents());
+        GPSCoords coords = new GPSCoords();
+
+        String lat = request.queryParams("lat");
+        String lon = request.queryParams("lon");
+
+        if ( lat == null || lon == null) {
+            throw new ManditoryQueryParameterException();
+        }
+
+        coords.setLat(Double.valueOf(lat));
+        coords.setLon(Double.valueOf(lon));
+
+        if(request.queryParams("query_set") == null ) {
+            return gson.toJson(repository.getEvents(coords));
+        }
+        Integer querySet = Integer.valueOf(request.queryParams("query_set"));
+        return gson.toJson(repository.getEvents(coords, querySet));
     }
-
-    //public String get
-
-
 
 }
