@@ -16,7 +16,7 @@ public class VEvent {
     private String description;
     private String category;
     private List<String> tag;
-    private long eventDate;
+    private String eventDate;
     private Venue venue;
     private List<String> imageUrls;
     private String contactPhone;
@@ -91,11 +91,11 @@ public class VEvent {
         this.tag = tag;
     }
 
-    public long getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(long eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 
