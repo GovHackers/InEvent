@@ -1,0 +1,106 @@
+/****************************************************************
+* border-radius
+****************************************************************/
+
+.border-radius(@tlr:0, @trr:@tlr, @brr:@tlr, @blr:@tlr) {
+	-webkit-border-top-left-radius: @tlr;
+	-webkit-border-top-right-radius: @trr;
+	-webkit-border-bottom-right-radius: @brr;
+	-webkit-border-bottom-left-radius: @blr;
+	-moz-border-radius-topleft: @tlr;
+	-moz-border-radius-topright: @trr;
+	-moz-border-radius-bottomright: @brr;
+	-moz-border-radius-bottomleft: @blr;
+	border-top-left-radius: @tlr;
+	border-top-right-radius: @trr;
+	border-bottom-right-radius: @brr;
+	border-bottom-left-radius: @blr;
+}
+
+/* less.js < 1.4.0-beta */
+/* .border-radius(20px, 20px, 20px, 20px); */
+
+/* lessphp */
+/* .border-radius(20px); */
+/* .border-radius(20px, 20px, 20px, 20px); */
+
+
+/****************************************************************
+* opacity
+****************************************************************/
+
+.opacity(@o:0) {
+	-moz-opacity: @o;
+	-khtml-opacity: @o;
+	-webkit-opacity: @o;
+	opacity: @o;
+	@oie: @o * 100;
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{oie})";
+	filter: ~"alpha(opacity=@{oie})";
+}
+
+/* .opacity(0.5); */
+
+
+/****************************************************************
+* box-sizing
+****************************************************************/
+
+.box-sizing(@b) {
+	-webkit-box-sizing: @b;
+	-moz-box-sizing: @b;
+	box-sizing: @b;
+}
+
+/* .box-sizing(border-box); */
+
+
+/****************************************************************
+* transitions
+****************************************************************/
+
+.transition(@p,@dur,@f,@del) {
+	-webkit-transition: @p @dur @f @del;
+	-moz-transition: @p @dur @f @del;
+	-o-transition: @p @dur @f @del;
+	transition: @p @dur @f @del;
+}
+/* property, duration, timing-function, delay */
+/* .transition(width, 0.2s, linear, 0s); */
+
+
+/****************************************************************
+* transforms
+****************************************************************/
+
+.transform(@v) {
+	-webkit-transform: @v;
+	-moz-transform: @v;
+	-ms-transform: @v;
+	-o-transform: @v;
+	transform: @v;
+}
+
+/* .transform(value); */
+
+
+/****************************************************************
+* user-select
+****************************************************************/
+
+.user-select(@v) {
+
+	.webkitTap(@v) when (@v = none) {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+	.webkitTap(@v);
+	-webkit-touch-callout: @v;
+	-webkit-user-select: @v;
+	-khtml-user-select: @v;
+	-moz-user-select: @v;
+	-ms-user-select: @v;
+	user-select: @v;
+}
+
+/* .user-select(value); */

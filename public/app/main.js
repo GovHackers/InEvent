@@ -1,5 +1,25 @@
 var inEvent = angular.module( 'inEvent', [] );
 
+
+inEvent.controller('mainController', function( $scope ) {
+
+  $scope.drawer = false;
+
+  $scope.drawerOpen = function() {
+    $scope.drawer = true;
+  };
+
+  $scope.drawerClose = function() {
+    $scope.drawer = false;
+  };
+
+  $scope.drawerToggle = function() {
+    $scope.drawer = !$scope.drawer;
+  }
+
+});
+
+
 inEvent.directive( 'test', [ function() {
   return {
     replace: true,
