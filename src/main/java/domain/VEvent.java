@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import java.util.Date;
 import java.util.List;
 
+import ptvapi.PTVStop;
+
 /**
  * Created by jrigby on 12/07/2014.
  *
@@ -30,6 +32,9 @@ public class VEvent {
     private double price;
     private String url;
     private String type;
+    private PTVStop nearestTrain;
+    private PTVStop nearestTram;
+    private PTVStop nearestBus;
 
     public String getType() { return type; }
 
@@ -146,6 +151,18 @@ public class VEvent {
     public void setImageUrls(List<String> imageUrls) { this.imageUrls = imageUrls; }
 
     public List<String> getImageUrls() { return imageUrls; }
+
+    public PTVStop getNearestTrain() { return nearestTrain; }
+
+    public void setNearestTrain(PTVStop nearestTrain) { this.nearestTrain = nearestTrain; }
+
+    public PTVStop getNearestTram() { return nearestTram; }
+
+    public void setNearestTram(PTVStop nearestTram) { this.nearestTram = nearestTram; }
+
+    public PTVStop getNearestBus() { return nearestBus; }
+
+    public void setNearestBus(PTVStop nearestBus) { this.nearestBus = nearestBus; }
 
     public String toJson(){
         Gson gson = new Gson();
