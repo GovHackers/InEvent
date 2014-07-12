@@ -14,6 +14,7 @@ public class EntryProcessor {
     public EntryProcessor(SyndEntryImpl eventRSSEntry) {
         entry = eventRSSEntry;
 
+        generateEventsFromDates();
     }
 
     public List<VEvent> getVEvents() {
