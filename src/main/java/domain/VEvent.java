@@ -1,8 +1,5 @@
 package domain;
 
-import com.google.gson.Gson;
-
-import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -12,21 +9,21 @@ import java.util.List;
  * Represents a single event occurrence
  */
 public class VEvent {
+
     private int id;
     private String title;
-    private URL link;
-    private URL bookingUrl;
-    private URL bookingAgencyLogo;
+    private String link;
+    private String bookingUrl;
+    private String bookingAgencyLogo;
     private String description;
     private String category;
     private List<String> tag;
     private Date eventDate;
     private Venue venue;
-    private List<URL> imageUrl;
+    private List<String> imageUrl;
     private String contactPhone;
     private String contactEmail;
     private boolean isFree;
-    private Gson gson;
     private boolean priceKnown;
     private double price;
 
@@ -46,11 +43,11 @@ public class VEvent {
         this.title = title;
     }
 
-    public URL getLink() {
+    public String getLink() {
         return link;
     }
 
-    public void setLink(URL link) {
+    public void setLink(String link) {
         this.link = link;
     }
 
@@ -118,11 +115,6 @@ public class VEvent {
         this.isFree = isFree;
     }
 
-    public String toJson(){
-        gson = new Gson();
-        return gson.toJson(this);
-    }
-
     public boolean isPriceKnown() { return priceKnown; }
 
     public void setPriceKnown(boolean priceKnown) { this.priceKnown = priceKnown; }
@@ -131,15 +123,15 @@ public class VEvent {
 
     public void setPrice(double price) { this.price = price; }
 
-    public URL getBookingUrl() { return bookingUrl; }
+    public String getBookingUrl() { return bookingUrl; }
 
-    public void setBookingUrl(URL bookingUrl) { this.bookingUrl = bookingUrl; }
+    public void setBookingUrl(String bookingUrl) { this.bookingUrl = bookingUrl; }
 
-    public URL getBookingAgencyLogo() { return bookingAgencyLogo; }
+    public String getBookingAgencyLogo() { return bookingAgencyLogo; }
 
-    public void setBookingAgencyLogo(URL bookingAgencyLogo) { this.bookingAgencyLogo = bookingAgencyLogo; }
+    public void setBookingAgencyLogo(String bookingAgencyLogo) { this.bookingAgencyLogo = bookingAgencyLogo; }
 
-    public void setImageUrl(List<URL> imageUrl) { this.imageUrl = imageUrl; }
+    public void setImageUrl(List<String> imageUrl) { this.imageUrl = imageUrl; }
 
-    public List<URL> getImageUrl() { return imageUrl; }
+    public List<String> getImageUrl() { return imageUrl; }
 }

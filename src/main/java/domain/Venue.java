@@ -9,6 +9,7 @@ public class Venue extends GPSCoords {
     private String name;
     private String addressLine1;
     private String addressLine2;
+    private String addressLine3;
     private String suburb;
     private String postcode;
 
@@ -34,6 +35,12 @@ public class Venue extends GPSCoords {
 
     public void setAddressLine2(String addressLine2) {
         this.addressLine2 = addressLine2;
+    }
+
+    public String getAddressLine3() { return addressLine3; }
+
+    public void setAddressLine3(String addressLine3) {
+        this.addressLine3 = addressLine3;
     }
 
     public String getSuburb() {
