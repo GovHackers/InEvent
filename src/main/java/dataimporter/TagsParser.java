@@ -10,7 +10,6 @@ public class TagsParser {
 
     public TagsParser() {
         parseTagsFile();
-        System.out.println("tagsData: " + tagsData.size());
     }
 
     private void parseTagsFile() {
