@@ -1,5 +1,4 @@
 package domain;
-
 import com.google.gson.Gson;
 
 import java.util.Date;
@@ -7,11 +6,6 @@ import java.util.List;
 
 import ptvapi.PTVStop;
 
-/**
- * Created by jrigby on 12/07/2014.
- *
- * Represents a single event occurrence
- */
 public class VEvent {
 
     private int id;
@@ -35,6 +29,11 @@ public class VEvent {
     private PTVStop nearestTrain;
     private PTVStop nearestTram;
     private PTVStop nearestBus;
+    private String location;
+
+    public String getLocation() { return location; }
+
+    public void setLocation(String location) { this.location = location; }
 
     public String getType() { return type; }
 
@@ -165,6 +164,9 @@ public class VEvent {
     public void setNearestBus(PTVStop nearestBus) { this.nearestBus = nearestBus; }
 
     public String toJson(){
+        // Manually populate the location for ElasticSearch:
+        location = venue.getLocation();
+
         Gson gson = new Gson();
         return gson.toJson(this);
     }
