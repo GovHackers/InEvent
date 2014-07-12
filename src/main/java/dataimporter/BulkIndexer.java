@@ -56,6 +56,11 @@ public class BulkIndexer {
                         .field("store", "yes")
 
                     .endObject()
+                    .startObject("ineventCategory")
+                        .field("type", "string")
+                        //.field("store", "yes")
+                        .field("index", "not_analyzed")
+                    .endObject()
                 .endObject()
                 .endObject()
                 .endObject();

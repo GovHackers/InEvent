@@ -1,13 +1,14 @@
 package repository;
 
+import domain.ExclusionFilter;
 import domain.GPSCoords;
 import factory.ElasticsearchClientFactory;
 import org.apache.lucene.queryparser.xml.FilterBuilder;
+import org.apache.lucene.queryparser.xml.builders.BooleanFilterBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
 import org.elasticsearch.index.query.functionscore.gauss.GaussDecayFunctionBuilder;
@@ -30,8 +31,10 @@ public class EventRepository {
         this.client = new ElasticsearchClientFactory().getInstance();
     }
 
-    public List<Map<String, Object>> getEvents(GPSCoords coords, int setFrom){
+    public List<Map<String, Object>> getEvents(GPSCoords coords, int setFrom, ExclusionFilter filter){
         List<Map<String, Object>> events = new ArrayList<>();
+
+
 
         GaussDecayFunctionBuilder eventDateFunction = ScoreFunctionBuilders.gaussDecayFunction("eventDate", EVENT_DATE_SCALE);
         GaussDecayFunctionBuilder locationFunction = ScoreFunctionBuilders.gaussDecayFunction("location", coords.getLocation(), LOCATION_SCALE);
@@ -43,11 +46,19 @@ public class EventRepository {
                 .boostMode("multiply")
                 .boost(1000);
 
+        BoolFilterBuilder exclusionFilter = FilterBuilders.boolFilter().mustNot(FilterBuilders.termFilter("ineventCategory", "zzz"));
+        if(filter != null){
+            for(String exclusion : filter.getExclusions()) {
+                exclusionFilter.mustNot(FilterBuilders.termFilter("event.ineventCategory", exclusion));
+            }
+        }
+
         SearchResponse response = client.prepareSearch(INDEX_NAME)
                 .setTypes(TYPE)
                 .setFrom(setFrom)
                 .setSize(1)
                 .setQuery(queryBuilder)
+                .setPostFilter(exclusionFilter)
                 .execute()
                 .actionGet();
 
@@ -60,8 +71,8 @@ public class EventRepository {
 
     }
 
-    public List<Map<String, Object>> getEvents(GPSCoords coords){
-        return getEvents(coords, 0);
+    public List<Map<String, Object>> getEvents(GPSCoords coords, Integer querySet) {
+        return getEvents(coords, querySet, null);
     }
 
     /*

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.gson.Gson;
+import domain.ExclusionFilter;
 import domain.GPSCoords;
 import factory.ElasticsearchClientFactory;
 import org.elasticsearch.action.search.SearchResponse;
@@ -37,11 +38,20 @@ public class EventsController {
         coords.setLat(Double.valueOf(lat));
         coords.setLon(Double.valueOf(lon));
 
-        if(request.queryParams("query_set") == null ) {
-            return gson.toJson(repository.getEvents(coords));
-        }
         Integer querySet = Integer.valueOf(request.queryParams("query_set"));
-        return gson.toJson(repository.getEvents(coords, querySet));
+        if(request.queryParams("query_set") == null ) {
+            querySet = 0;
+        }
+
+        String excludedCategories = request.queryParams("exclude");
+
+        if(excludedCategories == null) {
+            return gson.toJson(repository.getEvents(coords, querySet));
+        }
+
+        ExclusionFilter filter = new ExclusionFilter(excludedCategories);
+
+        return gson.toJson(repository.getEvents(coords, querySet, filter));
     }
 
 }
