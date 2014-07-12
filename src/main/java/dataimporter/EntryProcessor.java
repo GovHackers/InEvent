@@ -88,10 +88,17 @@ public class EntryProcessor {
 
     private LinkedList<String> getImageUrls() {
         List<Element> multimediaElements = getItemElementsInEntry("multimedia");
-        LinkedList<String> imageUrls = new LinkedList<>();
 
-        multimediaElements.forEach((image) ->
-                imageUrls.add(image.getChild("serverPath").getValue()));
+        LinkedList<String> imageUrls = new LinkedList<>();
+        for(Element multimediaElement : multimediaElements) {
+            List<Element> images = getItemElementsInEntry("image");
+            for (Element image : images) {
+                imageUrls.add(image.getChild("serverPath").getValue());
+            }
+        }
+
+        //multimediaElements.forEach((image) ->
+        //        imageUrls.add(image.getChild("serverPath").getValue()));
 
         return imageUrls;
     }
