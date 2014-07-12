@@ -8,7 +8,7 @@ import ptvapi.PTVStop;
 
 public class VEvent {
 
-    private int id;
+    private long id;
     private String title;
     private String link;
     private String bookingUrl;
@@ -43,11 +43,11 @@ public class VEvent {
 
     public void setUrl(String url) { this.url = url; }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
