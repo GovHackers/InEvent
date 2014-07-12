@@ -23,6 +23,8 @@ public class Importer {
         //TODO: Send this off to the DB
         List<VEvent> listOfEvents = getVEventsFromRSS("http://10.106.100.227:8080/GovHack/InEvent/eventsrss.xml");
         //List<VEvent> listOfEvents = getVEventsFromRSS("http://www.eventsvictoria.com/distributionservice/rss.xml");
+        BulkIndexer bulkIndexer = new BulkIndexer();
+        bulkIndexer.indexEvents(listOfEvents);
     }
 
     private static List<VEvent> getVEventsFromRSS(String rssURL) {

@@ -1,5 +1,7 @@
 package domain;
 
+import com.google.gson.Gson;
+
 import java.util.Date;
 import java.util.List;
 
@@ -134,4 +136,9 @@ public class VEvent {
     public void setImageUrl(List<String> imageUrl) { this.imageUrl = imageUrl; }
 
     public List<String> getImageUrl() { return imageUrl; }
+
+    public String toJson(){
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 }
