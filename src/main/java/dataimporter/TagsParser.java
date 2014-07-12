@@ -8,7 +8,6 @@ import java.util.List;
 
 public class TagsParser {
     private static LinkedList<String[]> tagsData = new LinkedList<>();
-    private static LinkedList<String[]> typesData = new LinkedList<>();
 
     public TagsParser() {
         //parseTypesFile();
@@ -41,6 +40,7 @@ public class TagsParser {
         }
     }
 
+    /*
     private void parseTypesFile() {
         BufferedReader br = null;
         String line = "";
@@ -66,6 +66,21 @@ public class TagsParser {
             }
         }
     }
+    */
+
+    public static String getIneventCategory(List<String> tags) {
+        String ineventCategory = "";
+        for(String tag : tags) {
+            for (String[] tagsDataLine : tagsData) {
+                if (tagsDataLine[0].contentEquals(tag)) {
+                    ineventCategory = tagsDataLine[2];
+                    break;
+                }
+            }
+        }
+
+        return ineventCategory;
+    }
 
     public static String getTagLabel(String tag) {
         List<String[]> result = new ArrayList<String[]>();
@@ -89,6 +104,7 @@ public class TagsParser {
         return tagLabels;
     }
 
+    /*
     public static String getTypeLabel(String type) {
         List<String[]> result = new ArrayList<String[]>();
 
@@ -110,4 +126,5 @@ public class TagsParser {
 
         return typeLabels;
     }
+    */
 }
