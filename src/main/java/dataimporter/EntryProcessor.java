@@ -11,6 +11,7 @@ import ptvapi.PTVResultsSet;
 import ptvapi.PTVSearchRecord;
 import ptvapi.PTVStop;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -84,7 +85,7 @@ public class EntryProcessor {
 
     private void generateEventsFromDates() {
         vEvents = new LinkedList<VEvent>();
-        for(Date date : getDates()) {
+        for(Long date : getDates()) {
             VEvent vEvent = new VEvent();
 
             vEvent.setEventDate(date);
@@ -183,11 +184,14 @@ public class EntryProcessor {
         return getItemValuesInEntry("phone").get(0);
     }
 
-    private List<Date> getDates() {
-        List<Date> dates = new LinkedList<Date>();
+    private List<Long> getDates() {
+        List<Long> dates = new LinkedList<Long>();
         for (String dateString : getItemValuesInEntry("eventDate")) {
                 try {
-                    Date date = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH).parse(dateString);
+                    DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH);
+                    dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+10"));
+
+                    long date = dateFormat.parse(dateString).getTime() / 1000; // Unit time is in seconds
                     dates.add(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
