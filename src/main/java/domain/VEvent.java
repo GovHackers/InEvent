@@ -13,15 +13,19 @@ public class VEvent {
     private int id;
     private String title;
     private URL link;
+    private URL bookingUrl;
+    private URL bookingAgencyLogo;
     private String description;
     private String category;
     private List<String> tag;
     private Date eventDate;
     private Venue venue;
-    private List<String> imageUrl;
+    private List<URL> imageUrl;
     private String contactPhone;
     private String contactEmail;
     private boolean isFree;
+    private boolean priceKnown;
+    private double price;
 
     public int getId() {
         return id;
@@ -87,14 +91,6 @@ public class VEvent {
         this.venue = venue;
     }
 
-    public List<String> getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(List<String> imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getContactPhone() {
         return contactPhone;
     }
@@ -118,4 +114,24 @@ public class VEvent {
     public void setFree(boolean isFree) {
         this.isFree = isFree;
     }
+
+    public boolean isPriceKnown() { return priceKnown; }
+
+    public void setPriceKnown(boolean priceKnown) { this.priceKnown = priceKnown; }
+
+    public double getPrice() { return price; }
+
+    public void setPrice(double price) { this.price = price; }
+
+    public URL getBookingUrl() { return bookingUrl; }
+
+    public void setBookingUrl(URL bookingUrl) { this.bookingUrl = bookingUrl; }
+
+    public URL getBookingAgencyLogo() { return bookingAgencyLogo; }
+
+    public void setBookingAgencyLogo(URL bookingAgencyLogo) { this.bookingAgencyLogo = bookingAgencyLogo; }
+
+    public void setImageUrl(List<URL> imageUrl) { this.imageUrl = imageUrl; }
+
+    public List<URL> getImageUrl() { return imageUrl; }
 }
