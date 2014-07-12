@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class EntryProcessor {
-
     private SyndEntryImpl entry;
     private List<VEvent> vEvents;
 
