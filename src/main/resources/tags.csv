@@ -1,79 +1,79 @@
-CRICKET,Cricket
-INDIEALTER,Indie / Alternative
-BASKETBALL,Basketball
-SAILING,Sailing
-TRIATHLON,Triathlon
-FASHION,Fashion
-DINING,Dining
-MUSICAL,Musical
-HORSERACIN,Horse Racing
-MAKERSM,Makers Market
-PAINTING,Painting
-COMMUNITY,Community
-COUNTRY,Country
-CIDER,Cider
-LIVEMUSIC,Live Music
-FLOWER,Flower
-WORLD,World
-BIGBANDMAR,Big Band / Marching Band
-CHARITY,Charity
-WINE,Wine
-WALKING,Walking
-VINTAGEM,Vintage Market
-THEATRE,Theatre
-RUNNING,Running
-CRAFTS,Crafts
-ACOUSTICFO,Acoustic and Folk
-HOMEIMPROV,Home Improvement
-CABERET,Caberet
-BEER,Beer
-FOODWINE,Food / Wine
-FILMDIGITA,Film
-AGRICULTUR,Agriculture
-LITERATURE,Literature
-MULTICULTU,Multicultural
-STAND-UPCO,Stand-up Comedy
-INDIGENOUS,Ingedenous
-SUSTAINABL,Sustainability
-DESIGN,Design
-GOLF,Golf
-PHOTOGRAPH,Photography
-MARKETS,Markets
-LEISURE,Leisure
-AFL,AFL
-EDUCATION,Education
-MUSICFESTI,Music Festival
-OPERA,Opera
-ROCKPOP,Rock / Pop
-DANCE,Dance
-FAMILY,Family
-DEGUSTATIO,Degustation
-HEALTHANDW,Health and Wellbeing
-SPORTS,Sports
-DANCEELECT,Dance / Electronica
-GARDENS,Gardens
-MOTORSPORT,Motorsports
-GARDENSAGR,Gardens and Agriculture
-GAYANDLESB,Gay and Lesbian
-PRODUCEM,Produce Markets
-JAZZBLUES,Jazz / Blues
-DINNERSHOW,Dinner Show
-SPIRITUAL,Spiritual
-STAGESHOWS,Stage shows
-CLASSICALC,Classic Choir
-LIFESTYLE,Lifestyle
-VISUALARTS,Visual Arts
-NEIGHBOURH,Neighbourhood
-SWIMMING,Swimming
-FETEFAIR,Fete / Fair
-SCULPTURE,Sculpture
-SOCCER,Soccer
-SHOPPING,Shopping
-HOCKEY,Hockey
-CYCLING,Cycling
-HISTORYAND,History and Heritage
-SCHOOLHOLS,School Holidays
-HARDROCKHE,Hard Rock and Heavy Metal
-ARTCULTURE,Arts Culture
-ANIMALSPET,Animals / Pets
-AUSTDAY,Australia Day
+CRICKET,Cricket,Sports
+INDIEALTER,Indie / Alternative,Live Music
+BASKETBALL,Basketball,Sports
+SAILING,Sailing,Sports
+TRIATHLON,Triathlon,Sports
+FASHION,Fashion,Exhibitions and Shows
+DINING,Dining,Food & Wine
+MUSICAL,Musical,Performing Arts
+HORSERACIN,Horse Racing,Sports
+MAKERSM,Makers Market,Markets
+PAINTING,Painting,Art & Exhibitions
+COMMUNITY,Community,Community
+COUNTRY,Country,Live Music
+CIDER,Cider,Food & Wine
+LIVEMUSIC,Live Music,Live Music
+FLOWER,Flower,Gardens & Agriculture
+WORLD,World,Community
+BIGBANDMAR,Big Band / Marching Band,Live Music
+CHARITY,Charity,Community
+WINE,Wine,Food & Wine
+WALKING,Walking,Sports
+VINTAGEM,Vintage Market,Markets
+THEATRE,Theatre,Performing Arts
+RUNNING,Running,Sports
+CRAFTS,Crafts,Lifestyle
+ACOUSTICFO,Acoustic and Folk,Live Music
+HOMEIMPROV,Home Improvement,Lifestyle
+CABERET,Caberet,Performing Arts
+BEER,Beer,Food & Wine
+FOODWINE,Food / Wine,Food & Wine
+FILMDIGITA,Film,Festivals and Celebrations
+AGRICULTUR,Agriculture,Gardens & Agriculture
+LITERATURE,Literature,Art & Exhibitions
+MULTICULTU,Multicultural,Community
+STAND-UPCO,Stand-up Comedy,Performing Arts
+INDIGENOUS,Indigenous,Community
+SUSTAINABL,Sustainability,Lifestyle
+DESIGN,Design,Exhibitions and Shows
+GOLF,Golf,Sports
+PHOTOGRAPH,Photography,Art & Exhibitions
+MARKETS,Markets,Markets
+LEISURE,Leisure,Lifestyle
+AFL,AFL,Sports
+EDUCATION,Education,Exhibitions and Shows
+MUSICFESTI,Music Festival,Festivals and Celebrations
+OPERA,Opera,Performing Arts
+ROCKPOP,Rock / Pop,Live Music
+DANCE,Dance,Live Music
+FAMILY,Family,Community
+DEGUSTATIO,Degustation,Food & Wine
+HEALTHANDW,Health and Wellbeing,Lifestyle
+SPORTS,Sports,Sports
+DANCEELECT,Dance / Electronica,Live Music
+GARDENS,Gardens,Gardens & Agriculture
+MOTORSPORT,Motorsports,Sports
+GARDENSAGR,Gardens and Agriculture,Gardens & Agriculture
+GAYANDLESB,Gay and Lesbian,Festivals and Celebrations
+PRODUCEM,Produce Markets,Markets
+JAZZBLUES,Jazz / Blues,Live Music
+DINNERSHOW,Dinner Show,Food & Wine
+SPIRITUAL,Spiritual,Lifestyle
+STAGESHOWS,Stage shows,Exhibitions and Shows
+CLASSICALC,Classic Choir,Live Music
+LIFESTYLE,Lifestyle,Lifestyle
+VISUALARTS,Visual Arts,Art & Exhibitions
+NEIGHBOURH,Neighbourhood,Community
+SWIMMING,Swimming,Sports
+FETEFAIR,Fete / Fair,Markets
+SCULPTURE,Sculpture,Art & Exhibitions
+SOCCER,Soccer,Sports
+SHOPPING,Shopping,Shopping
+HOCKEY,Hockey,Sports
+CYCLING,Cycling,Sports
+HISTORYAND,History and Heritage,Art & Exhibitions
+SCHOOLHOLS,School Holidays,Festivals and Celebrations
+HARDROCKHE,Hard Rock and Heavy Metal,Live Music
+ARTCULTURE,Arts Culture,Art & Exhibitions
+ANIMALSPET,Animals / Pets,Exhibitions and Shows
+AUSTDAY,Australia Day,Festivals and Celebrations

@@ -15,6 +15,7 @@ public class VEvent {
     private String bookingAgencyLogo;
     private String description;
     private String category;
+    private String ineventCategory;
     private List<String> tag;
     private long eventDate;
     private Venue venue;
@@ -30,6 +31,10 @@ public class VEvent {
     private PTVStop nearestTram;
     private PTVStop nearestBus;
     private String location;
+
+    public String getIneventCategory() { return ineventCategory; }
+
+    public void setIneventCategory(String ineventCategory) { this.ineventCategory = ineventCategory; }
 
     public String getLocation() { return location; }
 
