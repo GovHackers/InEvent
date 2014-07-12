@@ -5,7 +5,7 @@ package ptvapi;
  */
 public class PTVSearchRecord implements Comparable<PTVSearchRecord> {
     private String type;
-    private Result result;
+    private PTVStop result;
 
     public String getType() {
         return type;
@@ -15,11 +15,11 @@ public class PTVSearchRecord implements Comparable<PTVSearchRecord> {
         this.type = type;
     }
 
-    public Result getResult() {
+    public PTVStop getResult() {
         return result;
     }
 
-    public void setResult(Result result) {
+    public void setResult(PTVStop result) {
         this.result = result;
     }
 

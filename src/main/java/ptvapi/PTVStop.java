@@ -3,7 +3,7 @@ package ptvapi;
 /**
  * Created by jrigby on 12/07/2014.
  */
-public class Result {
+public class PTVStop {
     private String suburb, transport_type, location_name;
     private int stop_id;
     private Double lat,lon,distance;

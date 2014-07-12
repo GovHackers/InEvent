@@ -6,6 +6,10 @@ import com.sun.syndication.feed.synd.SyndEntryImpl;
 import domain.VEvent;
 import domain.Venue;
 import org.jdom.Element;
+import ptvapi.PTVApi;
+import ptvapi.PTVResultsSet;
+import ptvapi.PTVSearchRecord;
+import ptvapi.PTVStop;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,6 +45,37 @@ public class EntryProcessor {
             event.setPriceKnown(getPriceKnown());
         }
 
+        populateTransportOptions();
+    }
+
+    private void populateTransportOptions() {
+        VEvent event = vEvents.get(0);
+        PTVApi ptvApi = new PTVApi();
+        PTVResultsSet nearestPublicTransport = ptvApi.getNearestTransport(event.getVenue());
+        PTVStop nearestTrain = null;
+        PTVStop nearestTram = null;
+        PTVStop nearestBus = null;
+        for (PTVSearchRecord ptvRecord : nearestPublicTransport) {
+            if (ptvRecord.getResult().getTransport_type().equals("train") && nearestTrain == null) {
+                nearestTrain = ptvRecord.getResult();
+            } else if (ptvRecord.getResult().getTransport_type().equals("tram") && nearestTram == null) {
+                nearestTram = ptvRecord.getResult();
+            } else if (ptvRecord.getResult().getTransport_type().equals("bus") && nearestBus == null) {
+                nearestBus = ptvRecord.getResult();
+            }
+        }
+
+        for (VEvent event1 : vEvents) {
+            if (nearestBus != null) {
+                event1.setNearestBus(nearestBus);
+            }
+            if (nearestTrain != null) {
+                event1.setNearestTrain(nearestTrain);
+            }
+            if (nearestTram != null) {
+                event1.setNearestTram(nearestTram);
+            }
+        }
     }
 
     public List<VEvent> getVEvents() {
