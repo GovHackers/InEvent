@@ -5,6 +5,7 @@ import com.sun.syndication.feed.synd.SyndCategoryImpl;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import domain.VEvent;
 import domain.Venue;
+import org.hamcrest.generator.qdox.model.util.TagParser;
 import org.jdom.Element;
 import ptvapi.PTVApi;
 import ptvapi.PTVResultsSet;
@@ -39,6 +40,7 @@ public class EntryProcessor {
             event.setUrl(getUrl());
             event.setFree(getFreeEntry());
             event.setType(getType());
+            event.setIneventCategory(getIneventCategory());
 
             // Price data not available yet in the data set
             event.setPrice(getPrice());
@@ -46,6 +48,10 @@ public class EntryProcessor {
         }
 
         populateTransportOptions();
+    }
+
+    private String getIneventCategory() {
+        return TagsParser.getIneventCategory(getItemValuesInEntry("tags"));
     }
 
     private void populateTransportOptions() {

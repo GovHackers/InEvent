@@ -8,13 +8,14 @@ import ptvapi.PTVStop;
 
 public class VEvent {
 
-    private long id;
+    private int id;
     private String title;
     private String link;
     private String bookingUrl;
     private String bookingAgencyLogo;
     private String description;
     private String category;
+    private String ineventCategory;
     private List<String> tag;
     private long eventDate;
     private Venue venue;
@@ -31,6 +32,10 @@ public class VEvent {
     private PTVStop nearestBus;
     private String location;
 
+    public String getIneventCategory() { return ineventCategory; }
+
+    public void setIneventCategory(String ineventCategory) { this.ineventCategory = ineventCategory; }
+
     public String getLocation() { return location; }
 
     public void setLocation(String location) { this.location = location; }
@@ -43,11 +48,11 @@ public class VEvent {
 
     public void setUrl(String url) { this.url = url; }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
