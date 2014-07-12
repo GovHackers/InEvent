@@ -4,10 +4,9 @@ import com.sun.syndication.feed.synd.SyndEntryImpl;
 import domain.VEvent;
 import org.jdom.Element;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class EntryProcessor {
 
@@ -16,7 +15,6 @@ public class EntryProcessor {
 
     public EntryProcessor(SyndEntryImpl eventRSSEntry) {
         entry = eventRSSEntry;
-
         generateEventsFromDates();
     }
 
@@ -25,6 +23,7 @@ public class EntryProcessor {
     }
 
     private void generateEventsFromDates() {
+        vEvents = new LinkedList<VEvent>();
         for(Date date : getDates()) {
             VEvent vEvent = new VEvent();
 
@@ -33,15 +32,19 @@ public class EntryProcessor {
     }
 
     private List<Date> getDates() {
-        System.out.println("-----------");
-        List<String> dates = new LinkedList<String>();
-        for (Element e : (ArrayList<Element>)entry.getForeignMarkup()) {
-            if (e.getName().equals("myEvents:eventDate")) {
-                dates.add(e.getText());
-                System.out.println(e.getText());
+        List<Date> dates = new LinkedList<Date>();
+        for (Element element : (ArrayList<Element>)entry.getForeignMarkup()) {
+            if (element.getName().equals("eventDate")) {
+                String dateString = element.getText();
+                try {
+                    Date date = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH).parse(dateString);
+                    dates.add(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         }
-        return null;
+        return dates;
     }
 
     private String getTitle() {
