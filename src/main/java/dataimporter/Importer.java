@@ -13,21 +13,29 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import domain.VEvent;
+
 public class Importer {
     public static void main(String[] args) {
+        getVEventsFromRSS();
+    }
 
+    private static List<VEvent> getVEventsFromRSS() {
         SyndFeed f = GetRSSFeed("http://www.eventsvictoria.com/distributionservice/rss.xml");
+
+        ArrayList<VEvent> eventList = new ArrayList<VEvent>(f.getEntries().size());
+
         for (SyndEntryImpl entry : (List<SyndEntryImpl>)f.getEntries()) {
             EntryProcessor processor = new EntryProcessor(entry);
-            System.out.println(processor.getTitle());
+
+            // Use EntryProcessor to make a VEvent object and add it to list
+
         }
+
+        return eventList;
     }
 
-    void ImportRSSFeed(String feedURL) {
-
-    }
-
-    static SyndFeed GetRSSFeed(String feedURL) {
+    private static SyndFeed GetRSSFeed(String feedURL) {
         // TODO: FeedFetcherCache can be used to only retrieve new feeds in the future.
 
         FeedFetcher feedFetcher = new HttpURLFeedFetcher();
