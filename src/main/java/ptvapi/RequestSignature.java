@@ -59,7 +59,7 @@ public class RequestSignature {
     }
 
 
-    private String generateRequestURL(String uri) {
+    public String generateRequestURL(String uri) {
         String baseURL="http://timetableapi.ptv.vic.gov.au";
         StringBuffer url = new StringBuffer(baseURL).append(uri).append(uri.contains("?") ? "&" : "?").append("devid="+developerId).append("&signature="+generateSignatureForRequest(uri));
         return url.toString();
