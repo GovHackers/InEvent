@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class EntryProcessor {
-
+    static HashSet typesSet = new HashSet();
     private SyndEntryImpl entry;
     private List<VEvent> vEvents;
 
@@ -45,6 +45,10 @@ public class EntryProcessor {
             event.setPrice(getPrice());
             event.setPriceKnown(getPriceKnown());
         }
+
+        typesSet.add(vEvents.get(0).getType());
+        System.out.println(typesSet);
+
 
         populateTransportOptions();
     }
@@ -191,7 +195,7 @@ public class EntryProcessor {
                     DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.ENGLISH);
                     dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+10"));
 
-                    long date = dateFormat.parse(dateString).getTime() / 1000; // Unit time is in seconds
+                    long date = dateFormat.parse(dateString).getTime();// / 1000; // Unit time is in seconds
                     dates.add(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
