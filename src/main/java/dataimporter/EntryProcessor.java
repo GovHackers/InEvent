@@ -29,6 +29,10 @@ public class EntryProcessor {
             event.setCategory(getCategory());
             event.setTag(getTags());
             event.setVenue(getVenue());
+
+            // Price data not available yet in the data set
+            event.setPrice(0.0);
+            event.setPriceKnown(false);
         }
 
     }
