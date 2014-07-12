@@ -39,8 +39,10 @@ public class Importer {
         listOfEvents.addAll(getVEventsFromEventbrite());
         System.out.println("Done.");
 
+        System.out.println("Now indexing events in ElasticSearch...");
         BulkIndexer bulkIndexer = new BulkIndexer();
         bulkIndexer.indexEvents(listOfEvents);
+        System.out.println("Done.");
     }
 
     private static List<VEvent> getVEventsFromRSS(String rssURL) {
@@ -65,7 +67,10 @@ public class Importer {
             String oAuthToken = (new PropertiesConfiguration("eventbrite-key.properties")).getString("oauth-token");
             EventbriteApi eventbriteApi = new EventbriteApi(oAuthToken);
 
-            for (EventbriteEvent event : eventbriteApi.getBasicEventsJson("melbourne", "20km", false)) {
+            Set<EventbriteEvent> ebResults = eventbriteApi.getBasicEventsJson("melbourne", "20km", false);
+            System.out.println("Eventbrite events fetched. Performing postprocessing on Eventbrite events...");
+
+            for (EventbriteEvent event : ebResults) {
                 VEvent vEvent = new VEvent();
 
                 vEvent.setId(event.id);
