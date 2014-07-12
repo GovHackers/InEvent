@@ -15,8 +15,8 @@ public class EventbriteEvent {
     public TextHtml description;
     public StartEndTime start;
     public StartEndTime end;
-    public CategoryFormat category;
-    public CategoryFormat format;
+    public Category category;
+    public Format format;
     public Venue venue;
 
     public GPSCoords getCoords() {
@@ -48,7 +48,16 @@ public class EventbriteEvent {
         }
     }
 
-    public class CategoryFormat {
+    public class Category {
+        public int id;
+        public String resource_uri;
+        public String name;
+        public String name_localized;
+        public String short_name;
+    }
+    public class Format {
+        public int id;
+        public String resource_uri;
         public String name;
         public String short_name;
     }

@@ -77,7 +77,7 @@ public class Importer {
                 vEvent.setType("EVENTBRITE");
 
                 List<String> tags = new LinkedList<String>();
-                if (event.category.name != null) {
+                if (event.category != null) {
                     tags.add(event.category.name);
                 }
                 vEvent.setTag(tags);
