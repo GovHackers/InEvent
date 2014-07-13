@@ -1,4 +1,4 @@
-var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation'] );
+var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation', 'checklist-model'] );
 
 
 inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geolocation ) {
@@ -13,6 +13,7 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
          var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
         var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i);
+//        var eventData = $http.get('events.json');
         eventData.then( function( result ) {
 
           angular.forEach(result.data, function( value, key ) {
