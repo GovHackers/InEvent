@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import ptvapi.PTVStop;
 
 public class VEvent {
@@ -61,7 +62,7 @@ public class VEvent {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = StringEscapeUtils.unescapeHtml(title);
     }
 
     public String getLink() {
@@ -77,7 +78,7 @@ public class VEvent {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = StringEscapeUtils.unescapeHtml(description);
     }
 
     public String getCategory() {
