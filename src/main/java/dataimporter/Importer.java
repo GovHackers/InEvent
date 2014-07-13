@@ -78,9 +78,9 @@ public class Importer {
                 vEvent.setLink("http://www.eventbrite.com.au/e/"+vEvent.getId());
                 vEvent.setUrl("http://www.eventbrite.com.au/e/"+vEvent.getId());
                 vEvent.setDescription(event.description.text);
-                vEvent.setCategory("EVENTBRITE");
-                vEvent.setIneventCategory("EVENTBRITE");
-                vEvent.setType("EVENTBRITE");
+                vEvent.setCategory("Eventbrite");
+                vEvent.setIneventCategory("Eventbrite");
+                vEvent.setType("Eventbrite");
 
                 List<String> tags = new LinkedList<String>();
                 if (event.category != null) {
