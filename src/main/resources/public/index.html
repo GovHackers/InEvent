@@ -47,19 +47,22 @@
 
           <span class="interest">are you interested in...</span>
 
-          <div id="icons">
-            <span>free</span>
-            <div class="ptv train"></div>
-            <div class="ptv tram"></div>
-            <div class="ptv bus"></div>
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
+          <!--<div id="icons">-->
+            <!--<span>free</span>-->
+            <!--<div class="ptv train"></div>-->
+            <!--<div class="ptv tram"></div>-->
+            <!--<div class="ptv bus"></div>-->
 
-          <h1>Luna Park</h1>
+            <!--<i></i>-->
+            <!--<i></i>-->
+            <!--<i></i>-->
+          <!--</div>-->
 
-          <span>{{events[0].venue.name}}</span>
+          <h1>{{events[i].title}}</h1>
+          <div>{{events[i].venue.name}}</div>
+          <div>{{events[i].ineventCategory}}</div>
+          <div>{{events[i].date | date:'yyyy-MM-dd'}}</div>
+
 
         </div>
 
@@ -67,23 +70,23 @@
       </section>
 
       <section id="contentBottom">
-        <p>title: {{events[0].title}}</p>
-        <p>description: {{events[0].description}}</p>
-        <p>date: {{events[0].date}}</p>
-        <p>type: {{events[0].type}}</p>
-        <p>category: {{events[0].category}}</p>
+        <p>title: {{events[i].title}}</p>
+        <p>description: {{events[i].description}}</p>
+        <p>date: {{events[i].date}}</p>
+        <p>type: {{events[i].type}}</p>
+        <p>category: {{events[i].category}}</p>
         <p>tags:
-          <span data-ng-repeat="tag in events[0].tags">{{tag}} </span>
+          <span data-ng-repeat="tag in events[i].tags">{{tag}} </span>
         </p>
         <p>images: fudge the url</p>
-        <p>priceKnown: {{events[0].priceKnown}}</p>
-        <p>isFree: {{events[0].isFree}}</p>
-        <p>price: {{events[0].price}}</p>
-        <p>venue: {{events[0].venue}}</p>
-        <p>location: {{events[0].location}}</p>
-        <p>train: {{events[0].nearestTrain}}</p>
-        <p>tram: {{events[0].nearestTram}}</p>
-        <p>bus: {{events[0].nearestBus}}</p>
+        <p>priceKnown: {{events[i].priceKnown}}</p>
+        <p>isFree: {{events[i].isFree}}</p>
+        <p>price: {{events[i].price}}</p>
+        <p>venue: {{events[i].venue}}</p>
+        <p>location: {{events[i].location}}</p>
+        <p>train: {{events[i].nearestTrain}}</p>
+        <p>tram: {{events[i].nearestTram}}</p>
+        <p>bus: {{events[i].nearestBus}}</p>
 
 
 
@@ -106,13 +109,14 @@
 
 
 
-    <div id="rejectOver" data-ng-if="action === 'reject'" data-overlay>
+    <div class="rejectOver" data-ng-if="action === 'reject'">
       <!--<i class="fa fa-tick"></i>-->
     </div>
-    <div id="acceptOver" data-ng-if="action === 'accept'" data-overlay></div>
+    <div class="acceptOver" data-ng-if="action === 'accept'"></div>
 
 
-    <div id="selection">
+    <div id="selection"
+         data-ng-if="!expanded">
 
       <div id="no">
         <span>no</span>
@@ -120,8 +124,7 @@
            data-ng-click="reject()"></i>
       </div>
 
-      <div id="yes"
-           data-ng-if="!expanded">
+      <div id="yes">
         <span>yes</span>
         <i class="fa fa-caret-square-o-right"
            data-ng-click="save()"></i>

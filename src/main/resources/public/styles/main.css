@@ -2030,7 +2030,6 @@ body #drawer {
   display: block;
   height: 100%;
   width: 250px;
-  border-right: 3px solid black;
   top: 40px;
   left: 0;
   bottom: 0;
@@ -2070,7 +2069,6 @@ body #main {
   -ms-transform: translate3d(0px, 0px, 0px);
   -o-transform: translate3d(0px, 0px, 0px);
   transform: translate3d(0px, 0px, 0px);
-  background-color: red;
 }
 body #main * {
   -webkit-transform: translateZ(0);
@@ -2148,10 +2146,10 @@ body.open #shield {
   height: 200%;
   background-color: pink;
   color: #ffffff;
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  -moz-transition: all 0.3s ease-in-out 0s;
-  -o-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
+  -webkit-transition: top 0.3s ease-in-out 0s;
+  -moz-transition: top 0.3s ease-in-out 0s;
+  -o-transition: top 0.3s ease-in-out 0s;
+  transition: top 0.3s ease-in-out 0s;
 }
 #content #contentTop {
   height: 50%;
@@ -2187,13 +2185,13 @@ body.open #shield {
   font-size: 20px;
 }
 #content h1 {
-  font-size: 60px;
+  font-size: 40px;
   text-shadow: 2px 2px black;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
 }
-#acceptOver,
-#rejectOver {
+.acceptOver,
+.rejectOver {
   position: absolute;
   left: 0;
   top: 40px;
@@ -2201,11 +2199,11 @@ body.open #shield {
   bottom: 60px;
   opacity: 0;
 }
-#acceptOver.ng-enter,
-#rejectOver.ng-enter {
-  -webkit-animation: fade .5s;
-  -moz-animation: fade .5s;
-  animation: fade .5s;
+.acceptOver.ng-enter,
+.rejectOver.ng-enter {
+  -webkit-animation: fade .5s !important;
+  -moz-animation: fade .5s !important;
+  animation: fade .5s !important;
 }
 @-webkit-keyframes fade {
   0% {
@@ -2240,7 +2238,7 @@ body.open #shield {
     opacity: 0;
   }
 }
-#rejectOver {
+.rejectOver {
   background-color: #080808;
 }
 #selection {
