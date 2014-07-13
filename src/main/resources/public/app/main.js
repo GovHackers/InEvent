@@ -14,7 +14,7 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
 
         var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i);
         eventData.then( function( result ) {
-          reqIndex ++;
+
           angular.forEach(result.data, function( value, key ) {
 
             console.log(value.venue.name);
@@ -116,56 +116,8 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
 
 
-  EventFactory.getEvents();
+  EventFactory.getEvents($scope.i);
   $scope.events = EventFactory.events;
 
 
-}]);
-
-
-//inEvent.directive( 'overlay', [ function( $animate ) {
-//  return {
-//    link: function( scope, element, attrs ) {
-//
-//      $animate.enter(element, parent, after, {
-//        before : function() { }, //before the DOM operation
-//        after : function() { }, //just after the DOM operation
-//        close : function(wasCancelled) { } //when the animation is complete
-//      });
-//
-//    }
-//  }
-//}]);
-
-
-inEvent.directive( 'swiper', [ '$swipe', function( $swipe ) {
-  return {
-    link: function( scope, element, attrs ) {
-
-
-//      $swipe.bind( element, {
-//        start: function (coords, event) {
-//          startX = coords.x;
-//          startY = coords.y;
-//        },
-//        move: function (coords, event) {
-//
-//          direction = ( startX < coords.x + 5 ) ? 'right' : 'left';
-//          drag = ( Math.abs( startY - coords.y ) < 50 );
-//
-//          if( drag ) {
-//            element[0].style.left = startX - coords.x + 'px';
-//            console.log(startX + ' ' + coords.x);
-//          }
-//
-//        },
-//        end: function (coords, event) {
-//          console.log('end');
-//          element[0].style.left = '0px';
-//        }
-//
-//      });
-
-    }
-  }
 }]);
