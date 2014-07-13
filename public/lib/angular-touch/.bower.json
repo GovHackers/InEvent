@@ -1,0 +1,13 @@
+{
+  "name": "angular-touch",
+  "homepage": "https://github.com/patrickmarabeas/angular-touch.js",
+  "_release": "a9df4c5edd",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a9df4c5edde0871a5a267dc34a9a75e4c3506777"
+  },
+  "_source": "git://github.com/patrickmarabeas/angular-touch.js.git",
+  "_target": "*",
+  "_originalSource": "patrickmarabeas/angular-touch.js"
+}

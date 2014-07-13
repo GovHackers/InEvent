@@ -8,6 +8,7 @@
   <!--[if lt IE 8]><script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.2.6/json3.min.js"></script><![endif]-->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
 
+  <!--<link rel="stylesheet" type="text/css" href="lib/fontawesome/font-awesome.min.css" />-->
   <link rel="stylesheet" type="text/css" href="styles/main.css" />
 </head>
 <body data-ng-controller="mainController"
@@ -17,27 +18,49 @@
 
   <div id="main">
 
-    <div id="topBar">
-      <div id="menuBtn"
-           data-ng-click="drawerToggle()"></div>
-      <h1>inevent</h1>
+    <div id="topBar"
+         data-ng-click="drawerToggle()">
+      <div id="menuBtn">
+        <i class="fa fa-bars"></i>
+      </div>
+      <h1>inEvent</h1>
     </div>
 
-    <div id="content">
+    <div id="content"
+         data-swiper
+         data-ng-swipe-left="reject()"
+         data-ng-swipe-right="save()">
 
-      <div data-test>this is a test</div>
+      <div id="selection">
+
+        <div id="no"
+             data-ng-click="reject()"></div>
+
+        <div id="yes"
+             data-ng-click="save()"></div>
+
+      </div>
+
+      <!--<div id="overlay" data-ng-class="{show:action === 'reject'}"></div>-->
+      <div id="rejectOver" data-ng-if="action === 'reject'" data-overlay>
+        <i class="fa fa-tick"></i>
+      </div>
+      <div id="acceptOver" data-ng-if="action === 'accept'" data-overlay></div>
 
     </div>
 
-    <div id="btmBar"></div>
+    <div id="btmBar">bottom button</div>
 
-    <div id="shield"></div>
+    <div id="shield"
+         data-ng-click="drawerClose()"></div>
 
   </div>
 
 
 
 <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="lib/angular-touch/angular-touch.js"></script>
+<script type="text/javascript" src="lib/angular-animate/angular-animate.min.js"></script>
 <script type="text/javascript" src="app/main.js"></script>
 
 </body>
