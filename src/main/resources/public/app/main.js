@@ -113,29 +113,32 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
   $scope.i = 0;
   $scope.reject = function() {
-    $scope.i ++;
-    $scope.action = 'reject';
-    $timeout( function() {
-      $scope.action = undefined;
-    },500);
+    if( !$scope.expanded ) {
+      $scope.i++;
+      $scope.action = 'reject';
+      $timeout(function () {
+        $scope.action = undefined;
+      }, 500);
 
-    if( $scope.expanded ) $scope.expand();
+      EventFactory.getEvents($scope.i, $scope.excats());
+      $scope.events = EventFactory.events;
 
-    console.log($scope.categoryModel);
-
-    EventFactory.getEvents($scope.i, $scope.excats());
-    $scope.events = EventFactory.events;
-
+    } else {
+      $scope.action = '';
+    }
   };
 
   $scope.save = function() {
     if( !$scope.expanded ) {
       $scope.action = 'accept';
       $timeout( function() {
+
         $scope.action = undefined;
       },500);
 
       $scope.expand();
+    } else {
+      $scope.action = '';
     }
   };
 

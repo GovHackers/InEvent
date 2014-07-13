@@ -92,7 +92,6 @@ body {
     display: block;
     height: 100%;
     width: @drawerW;
-    border-right: 3px solid black;
 
     top: @topBar;
     left: 0;
@@ -134,8 +133,6 @@ body {
     width: 100%;
     .transition(all,0.1s,linear,0s);
     .transform( translate3d(0px,0px,0px) );
-
-    background-color: red;
 
     * {
       .transform( translateZ(0) );
@@ -239,7 +236,7 @@ body {
 
 //  padding: 10px;
 
-  .transition(all,0.3s,ease-in-out,0s);
+  .transition(top,0.3s,ease-in-out,0s);
 
 
 
@@ -322,7 +319,7 @@ body {
 
 
 
-#acceptOver, #rejectOver {
+.acceptOver, .rejectOver {
   position: absolute;
   left: 0;
   top: @topBar;
@@ -331,9 +328,9 @@ body {
   opacity: 0;
 
   &.ng-enter {
-    -webkit-animation: fade .5s;
-    -moz-animation: fade .5s;
-    animation: fade .5s;
+    -webkit-animation: fade .5s !important;
+    -moz-animation: fade .5s !important;
+    animation: fade .5s !important;
   }
 
   @-webkit-keyframes fade {
@@ -354,10 +351,10 @@ body {
 
 }
 
-#acceptOver {
+.acceptOver {
 //  background-color: green;
 }
-#rejectOver {
+.rejectOver {
 //  background-color: red;
   background-color: @dark;
 }
