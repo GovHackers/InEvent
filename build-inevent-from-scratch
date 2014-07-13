@@ -1,0 +1,18 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
+cd InEvent
+
+mvn clean
+
+cat << END > src/main/resources/ptv-keys.properties
+devid=DEV_ID_HERE
+api-key=API_KEY_HERE
+END
+
+cat << END > src/main/resources/eventbrite-key.properties
+oauth-token=OAUTH_TOKEN
+END
+
+mvn install -DskipTests
