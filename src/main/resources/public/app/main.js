@@ -1,7 +1,7 @@
 var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation'] );
 
 
-inEvent.factory( 'EventFactory', [ '$scope', '$http', 'geolocation', function( $scope, $http, geolocation ) {
+inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geolocation ) {
   return {
 
     events: [],
@@ -10,9 +10,9 @@ inEvent.factory( 'EventFactory', [ '$scope', '$http', 'geolocation', function( $
       var _this = this;
 
       geolocation.getLocation().then(function(data){
-        $scope.coords = {lat:data.coords.latitude, long:data.coords.longitude};
+         var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + $scope.coords.lat + '&lon=' + $scope.coords.long + '&query_set=' + $scope.index);
+        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + $scope.index);
         eventData.then( function( result ) {
           angular.forEach(result.data, function( value, key ) {
 
