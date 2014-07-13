@@ -24,7 +24,7 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
               'date': value.eventDate,
 
               'type': value.type,
-              'category': value.category,
+              'category': value.ineventCategory,
               'tags': value.tag,
 
               'images': value.imageURLs,
