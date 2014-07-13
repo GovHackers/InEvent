@@ -10,7 +10,7 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
       var _this = this;
 
       geolocation.getLocation().then(function(data){
-         var coords = {lat:data.coords.latitude, long:data.coords.longitude};
+        var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
         var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
 //        var eventData = $http.get('events.json');
@@ -158,4 +158,3 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
 
 }]);
-
