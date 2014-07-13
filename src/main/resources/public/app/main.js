@@ -1,7 +1,7 @@
 var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate', 'geolocation'] );
 
 
-inEvent.factory( 'EventFactory', [ '$scope', '$http', function( $scope, $http, geolocation ) {
+inEvent.factory( 'EventFactory', [ '$scope', '$http', 'geolocation', function( $scope, $http, geolocation ) {
   return {
 
     events: [],
