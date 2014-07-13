@@ -87,6 +87,13 @@
         <p>train: {{events[i].nearestTrain}}</p>
         <p>tram: {{events[i].nearestTram}}</p>
         <p>bus: {{events[i].nearestBus}}</p>
+        <p>GMap Thumbnail:
+            <img border="0" src="//maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap
+            &markers=color:blue%7Clabel:S%7C{{events[i].location}}&markers=color:green%7Clabel:G%7C
+            {{events[i].nearestBus.lat}},{{events[i].nearestBus.lon}}
+            &markers=color:red%7Clabel:C%7C
+            {{events[i].nearestTram.lat}},{{events[i].nearestTram.lon}}">
+        </p>
 
 
 
