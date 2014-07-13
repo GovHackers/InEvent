@@ -45,7 +45,7 @@ public class EventsController {
 
         String excludedCategories = request.queryParams("excluded_cats");
 
-        if(excludedCategories == null) {
+        if(excludedCategories == null || excludedCategories.isEmpty()) {
             return gson.toJson(repository.getEvents(coords, querySet));
         }
 
