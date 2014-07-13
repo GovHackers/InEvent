@@ -6,14 +6,13 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
 
     events: [],
 
-    getEvents: function() {
+    getEvents: function(i) {
       var _this = this;
-      var reqIndex = 0;
 
       geolocation.getLocation().then(function(data){
          var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + reqIndex);
+        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i);
         eventData.then( function( result ) {
           reqIndex ++;
           angular.forEach(result.data, function( value, key ) {
@@ -82,7 +81,9 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
     $scope.drawer = !$scope.drawer;
   };
 
+  $scope.i = 0;
   $scope.reject = function() {
+    $scope.i ++;
     $scope.action = 'reject';
     $timeout( function() {
       $scope.action = undefined;
@@ -90,7 +91,7 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
     if( $scope.expanded ) $scope.expand();
 
-    EventFactory.getEvents();
+    EventFactory.getEvents($scope.i);
     $scope.events = EventFactory.events;
 
   };
