@@ -84,15 +84,15 @@
         <p>price: {{events[i].price}}</p>
         <p>venue: {{events[i].venue}}</p>
         <p>location: {{events[i].location}}</p>
-        <p>train: {{events[i].nearestTrain}}</p>
-        <p>tram: {{events[i].nearestTram}}</p>
-        <p>bus: {{events[i].nearestBus}}</p>
+        <p>train: {{events[i].train}}</p>
+        <p>tram: {{events[i].tram}}</p>
+        <p>bus: {{events[i].bus}}</p>
         <p>GMap Thumbnail:
             <img border="0" src="//maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap
             &markers=color:blue%7Clabel:S%7C{{events[i].location}}&markers=color:green%7Clabel:G%7C
-            {{events[i].nearestBus.lat}},{{events[i].nearestBus.lon}}
+            {{events[i].bus.lat}},{{events[i].bus.lon}}
             &markers=color:red%7Clabel:C%7C
-            {{events[i].nearestTram.lat}},{{events[i].nearestTram.lon}}">
+            {{events[i].tram.lat}},{{events[i].tram.lon}}">
         </p>
 
 
