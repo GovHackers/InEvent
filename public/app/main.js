@@ -1,7 +1,63 @@
 var inEvent = angular.module( 'inEvent', ['ngTouch', 'ngAnimate'] );
 
 
-inEvent.controller('mainController', function( $scope, $timeout ) {
+inEvent.factory( 'EventFactory', [ '$http', function( $http ) {
+  return {
+
+    events: [],
+
+    getEvents: function() {
+      var _this = this;
+      var eventData = $http.get('events.json');
+      eventData.then( function( result ) {
+        angular.forEach(result.data, function( value, key ) {
+
+          console.log(value.venue.name);
+          console.log(_this);
+
+          _this.events.push({
+            'title': value.title,
+            'description': value.description,
+            'date': value.eventDate,
+
+            'type': value.type,
+            'category': value.category,
+            'tags': value.tag,
+
+            'images': value.imageURLs,
+
+            'priceKnown': value.priceKnown,
+            'isFree': value.isFree,
+            'price': value.price,
+
+            'venue': value.venue,
+            'location': value.location,
+
+            'train': value.nearestTrain,
+            'tram': value.nearestTram,
+            'bus': value.nearestBus,
+
+            'link': value.link, //events victoria - use as second preference
+            'url': value.url, //event website - use as first preference
+            'email': value.contactEmail,
+            'phone': value.contactPhone
+          });
+        });
+      });
+      eventData.error(function(data, status, headers, config) {
+        console.log(status);
+      });
+
+    }
+
+  }
+
+}]);
+
+
+
+
+inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', function( $scope, $timeout, EventFactory ) {
 
   $scope.drawer = false;
 
@@ -22,16 +78,41 @@ inEvent.controller('mainController', function( $scope, $timeout ) {
     $timeout( function() {
       $scope.action = undefined;
     },500);
+
+    if( $scope.expanded ) $scope.expand();
+
+    EventFactory.getEvents();
+    $scope.events = EventFactory.events;
+
+
+
   };
 
   $scope.save = function() {
-    $scope.action = 'accept';
-    $timeout( function() {
-      $scope.action = undefined;
-    },500);
+    if( !$scope.expanded ) {
+      $scope.action = 'accept';
+      $timeout( function() {
+        $scope.action = undefined;
+      },500);
+
+      $scope.expand();
+    }
   };
 
-});
+
+  $scope.expanded = false;
+  $scope.expand = function() {
+    $scope.expanded = !$scope.expanded;
+    angular.element( document.getElementById('content') ).toggleClass('expand');
+  };
+
+
+
+  EventFactory.getEvents();
+  $scope.events = EventFactory.events;
+
+
+}]);
 
 
 //inEvent.directive( 'overlay', [ function( $animate ) {
@@ -64,17 +145,15 @@ inEvent.directive( 'swiper', [ '$swipe', function( $swipe ) {
 //          direction = ( startX < coords.x + 5 ) ? 'right' : 'left';
 //          drag = ( Math.abs( startY - coords.y ) < 50 );
 //
-//          if( !drag ) this.end();
-//
-//          console.log(drag);
-//
-//          if (direction === 'left' && drag) angular.element( document.getElementById('yes') ).addClass('test')
-//          else angular.element( document.getElementById('yes') ).removeClass('test')
+//          if( drag ) {
+//            element[0].style.left = startX - coords.x + 'px';
+//            console.log(startX + ' ' + coords.x);
+//          }
 //
 //        },
 //        end: function (coords, event) {
 //          console.log('end');
-//
+//          element[0].style.left = '0px';
 //        }
 //
 //      });
