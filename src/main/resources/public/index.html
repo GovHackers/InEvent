@@ -51,9 +51,6 @@
           <div class="ptv tram" data-ng-if="events[i].tram"></div>
           <div class="ptv bus" data-ng-if="events[i].bus"></div>
 
-          <!--<i></i>-->
-          <!--<i></i>-->
-          <!--<i></i>-->
         </div>
 
         <div class="wrapper">
@@ -88,44 +85,20 @@
           {{events[i].venue.postcode}}
           </p>
 
+          <div>{{events[i].contactPhone}}</div>
+          <a ng-href="{{events[i].contactEmail}}">contact email</a>
+
           <p data-ng-if="events[i].train">Closest train: {{events[i].train.location_name}}</p>
           <p data-ng-if="events[i].tram">Closest tram: {{events[i].tram.location_name}}</p>
           <p data-ng-if="events[i].bus">Closest bus: {{events[i].bus.location_name}}</p>
 
+          <div>
+            <a ng-href="{{events[i].url || events[i].link }}">event website</a>
+          </div>
+
         </div>
 
-
-
-
-        <!--<p>venue: {{events[i].venue}}</p>-->
-        <!--<p>location: {{events[i].location}}</p>-->
-        <!--<p>train: {{events[i].train}}</p>-->
-        <!--<p>tram: {{events[i].tram}}</p>-->
-        <!--<p>bus: {{events[i].bus}}</p>-->
-        <!--<p>GMap Thumbnail:-->
-            <!--<img border="0" src="//maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap-->
-            <!--&markers=color:blue%7Clabel:S%7C{{events[i].location}}&markers=color:green%7Clabel:G%7C-->
-            <!--{{events[i].bus.lat}},{{events[i].bus.lon}}-->
-            <!--&markers=color:red%7Clabel:C%7C-->
-            <!--{{events[i].tram.lat}},{{events[i].tram.lon}}">-->
-        <!--</p>-->
-
-
-
-        <!--'link': value.link, //events victoria - use as second preference-->
-        <!--'url': value.url, //event website - use as first preference-->
-        <!--'email': value.contactEmail,-->
-        <!--'phone': value.contactPhone-->
-
       </section>
-
-      <!--<h1>This is some event</h1>-->
-
-      <!--<time datetime="">Today</time>-->
-
-      <!--<p>Event description</p>-->
-
-
 
     </div>
 
