@@ -19,33 +19,12 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
           angular.forEach(result.data, function( value, key ) {
 
             _this.events.push({
-              'title': result.data[key].title,
-              'description': result.data[key].description,
-              'date': result.data[key].eventDate,
-
-              'type': result.data.type,
-              'ineventCategory': result.data[key].ineventCategory,
-              'tags': result.data[key].tag,
-
-              'images': result.data[key].imageURLs,
-
-              'priceKnown': result.data[key].priceKnown,
-              'isFree': result.data[key].isFree,
-              'price': result.data[key].price,
-
-              'venue': result.data[key].venue,
-              'location': result.data[key].location,
-
-              'train': result.data[key].nearestTrain,
-              'tram': result.data[key].nearestTram,
-              'bus': result.data[key].nearestBus,
-
-              'link': result.data[key].link, //events victoria - use as second preference
-              'url': result.data[key].url, //event website - use as first preference
-              'email': result.data[key].contactEmail,
-              'phone': result.data[key].contactPhone
+              'data': result.data[0]
             });
           });
+        });
+        eventData.success(function() {
+
         });
         eventData.error(function(data, status, headers, config) {
           console.log(status);
@@ -123,7 +102,7 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
       }, 500);
 
       EventFactory.getEvents($scope.i, $scope.excats());
-      $scope.events = EventFactory.events;
+      $scope.events = EventFactory.events[i].data
 
     } else {
       $scope.action = '';
