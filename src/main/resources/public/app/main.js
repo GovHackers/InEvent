@@ -108,9 +108,19 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
     "Eventbrite"
   ];
   $scope.categoryModel = {
-    excats: ["Live Music",
+    excats: ["Sports",
+      "Live Music",
+      "Exhibitions and Shows",
+      "Food and Wine",
+      "Performing Arts",
+      "Markets",
+      "Art and Exhibitions",
+      "Community",
+      "Gardens and Agriculture",
       "Lifestyle",
-      "Food and Wine"]
+      "Festivals and Celebrations",
+      "Shopping",
+      "Eventbrite"]
   };
   $scope.excats = function() {
     return _.difference($scope.categories, $scope.categoryModel.excats);
