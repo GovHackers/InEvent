@@ -2214,6 +2214,23 @@ body.open #shield {
 }
 #content #contentBottom .wrapper p {
   font-size: 20px;
+  text-align: justify;
+}
+#content #contentBottom .wrapper .train {
+  color: #0082cc;
+}
+#content #contentBottom .wrapper .tram {
+  color: #6dbd41;
+}
+#content #contentBottom .wrapper .bus {
+  color: #f69114;
+}
+#content #contentBottom .wrapper .website a {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: pink;
+  color: #ffffff;
 }
 .acceptOver,
 .rejectOver {
