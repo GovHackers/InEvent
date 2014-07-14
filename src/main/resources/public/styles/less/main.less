@@ -390,40 +390,80 @@ body {
   left: 15px;
   right: 15px;
 
-  height: @btmBar;
+  height: @btmBar / 2;
+
+//  background-color: pink;
 
 
 
   #no {
     float: left;
-    width: 50%;
+    width: 20%;
     height: 100%;
 
     font-family: 'fontawesome';
-    font-size: 30px;
-    color: @white;
+    font-size: 15px;
+    color: red;
 
     text-align: left;
+    padding: 10px;
 
+    -webkit-animation: bounce .5s 0s 5;
+    -moz-animation: bounce .5s 0s 5;
+    animation: bounce .5s 0s 5;
 
-    //      opacity: .3;
-//    background-color: #E82C0C;
+    @-webkit-keyframes bounce {
+      0% { margin-left: 0; }
+      50% { margin-left: 10px; }
+      100% { margin-left: 0; }
+    }
+    @-moz-keyframes bounce {
+      0% { margin-left: 0; }
+      50% { margin-left: 10px; }
+      100% { margin-left: 0; }
+    }
+    @keyframes bounce {
+      0% { margin-left: 0; }
+      50% { margin-left: 10px; }
+      100% { margin-left: 0; }
+    }
+
   }
 
   #yes {
     float: right;
 
-    width: 50%;
+    width: 20%;
     height: 100%;
 
     font-family: 'fontawesome';
-    font-size: 30px;
-    color: @white;
+    font-size: 15px;
+    color: red;
 
     text-align: right;
+    padding: 10px;
 
-    //      opacity: .3;
-//    background-color: #57FF6C;
+
+    -webkit-animation: bounce2 .5s 0s 5;
+    -moz-animation: bounce2 .5s 0s 5;
+    animation: bounce2 .5s 0s 5;
+
+    @-webkit-keyframes bounce2 {
+      0% { margin-right: 0; }
+      50% { margin-right: 10px; }
+      100% { margin-right: 0; }
+    }
+    @-moz-keyframes bounce2 {
+      0% { margin-right: 0; }
+      50% { margin-right: 10px; }
+      100% { margin-right: 0; }
+    }
+    @keyframes bounce2 {
+      0% { margin-right: 0; }
+      50% { margin-right: 10px; }
+      100% { margin-right: 0; }
+    }
+
   }
 }
 

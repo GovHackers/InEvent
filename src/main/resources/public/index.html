@@ -66,7 +66,6 @@
 
           <h1>{{events[i].title}}</h1>
           <div>{{events[i].venue.name}}</div>
-          <div>{{events[i].ineventCategory}}</div>
           <div>{{events[i].date | date:'yyyy-MM-dd'}}</div>
 
 
@@ -131,16 +130,14 @@
     <div id="selection"
          data-ng-if="!expanded">
 
-      <div id="no">
+      <div id="no" data-ng-click="reject()">
+        <i class="fa fa-caret-square-o-left"></i>
         <span>no</span>
-        <i class="fa fa-caret-square-o-left"
-           data-ng-click="reject()"></i>
       </div>
 
-      <div id="yes">
+      <div id="yes" data-ng-click="save()">
         <span>yes</span>
-        <i class="fa fa-caret-square-o-right"
-           data-ng-click="save()"></i>
+        <i class="fa fa-caret-square-o-right"></i>
       </div>
 
     </div>
