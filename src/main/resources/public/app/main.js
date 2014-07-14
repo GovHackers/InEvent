@@ -19,31 +19,31 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
           angular.forEach(result.data, function( value, key ) {
 
             if(value.ineventCategory === 'Markets')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/markets.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/markets.jpg')";
             if(value.ineventCategory === 'Eventbrite')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/eventbrite.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/eventbrite.jpg')";
             if(value.ineventCategory === 'Sports')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/sports.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/sports.jpg')";
             if(value.ineventCategory === 'Live Music')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/live_music.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/live_music.jpg')";
             if(value.ineventCategory === 'Exhibitions and Shows')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/art_and_exhibitions.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/art_and_exhibitions.jpg')";
             if(value.ineventCategory === 'Food and Wine')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/food_and_wine.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/food_and_wine.jpg')";
             if(value.ineventCategory === 'Performing Arts')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/performing_arts.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/performing_arts.jpg')";
             if(value.ineventCategory === 'Art and Exhibitions')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/art_and_exhibitions.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/art_and_exhibitions.jpg')";
             if(value.ineventCategory === 'Community')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/community.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/community.jpg')";
             if(value.ineventCategory === 'Gardens and Agriculture')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/gardens_and_agriculture.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/gardens_and_agriculture.jpg')";
             if(value.ineventCategory === 'Lifestyle')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/lifestyle.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/lifestyle.jpg')";
             if(value.ineventCategory === 'Festivals and Celebrations')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/festivals_and_celebrations.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/festivals_and_celebrations.jpg')";
             if(value.ineventCategory === 'Shopping')
-              document.getElementById('contentTop').style.backgroundImage = "url('../public/images/stock_photos/shopping.jpg')";
+              document.getElementById('contentTop').style.backgroundImage = "url('/images/stock_photos/shopping.jpg')";
 
             _this.events.push({
               'title': value.title,
