@@ -10,21 +10,42 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
       var _this = this;
 
       geolocation.getLocation().then(function(data){
-         var coords = {lat:data.coords.latitude, long:data.coords.longitude};
+        var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-//        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
-        var eventData = $http.get('events.json');
+        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
+//        var eventData = $http.get('events.json');
         eventData.then( function( result ) {
 
           angular.forEach(result.data, function( value, key ) {
 
             _this.events.push({
-              'data': result.data[0]
+              'title': value.title,
+              'description': value.description,
+              'date': value.eventDate,
+
+              'type': value.type,
+              'ineventCategory': value.ineventCategory,
+              'tags': value.tag,
+
+              'images': value.imageURLs,
+
+              'priceKnown': value.priceKnown,
+              'isFree': value.isFree,
+              'price': value.price,
+
+              'venue': value.venue,
+              'location': value.location,
+
+              'train': value.nearestTrain,
+              'tram': value.nearestTram,
+              'bus': value.nearestBus,
+
+              'link': value.link, //events victoria - use as second preference
+              'url': value.url, //event website - use as first preference
+              'email': value.contactEmail,
+              'phone': value.contactPhone
             });
           });
-        });
-        eventData.success(function() {
-
         });
         eventData.error(function(data, status, headers, config) {
           console.log(status);
@@ -102,7 +123,7 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
       }, 500);
 
       EventFactory.getEvents($scope.i, $scope.excats());
-      $scope.events = EventFactory.events[i].data
+      $scope.events = EventFactory.events;
 
     } else {
       $scope.action = '';
@@ -137,4 +158,3 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
 
 
 }]);
-
