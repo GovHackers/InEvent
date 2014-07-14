@@ -73,7 +73,7 @@
       <section id="contentBottom">
         <div class="wrapper">
 
-          <p>{{events[i].description}}</p>
+          <p class="description">{{events[i].description}}</p>
 
           <p data-ng-if="events[i].isFree">This is a free event!</p>
 
@@ -88,7 +88,7 @@
           <p data-ng-if="events[i].bus"><span class="bus">Closest bus:</span> {{events[i].bus.location_name}}</p>
 
           <div class="website">
-            <a ng-href="{{events[i].url || events[i].link }}" target="_blank">event website</a>
+            <a ng-href="http://{{events[i].url || events[i].link }}" target="_blank">event website</a>
           </div>
 
         </div>
