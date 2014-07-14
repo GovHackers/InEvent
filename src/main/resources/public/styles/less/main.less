@@ -163,7 +163,7 @@ body {
 
       #topBar {
         h1 {
-          color: red;
+//          color: red;
         }
 
       }
@@ -231,7 +231,7 @@ body {
 
 //  overflow-y: scroll;
 
-  background-color: pink;
+  background-color: @white;
   color: @white;
 
 //  padding: 10px;
@@ -241,29 +241,59 @@ body {
 
 
   #contentTop {
-//    position: absolute;
-//    top: @topBar;
-//    bottom: @btmBar;
-//    left: 0;
-//    right: 0;
+
+//    background-image: url('../images/stock_photos/markets.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;;
 
     height: 50%;
 
+    .interest {
+      padding: 10px 0;
+    }
 
+    h1 {
+      font-size: 40px;
+      text-shadow: 2px 2px black;
+      margin: 10px 0;
+      padding: 0;
+//
+//      border-top: 1px solid grey;
+//      border-bottom: 1px solid grey;
+    }
+
+    .tag {
+      padding: 5px;
+      border: 1px solid white;
+      margin-right: 5px;
+    }
 
     .wrapper {
       padding: 15px;
+      margin-left: 50px;
     }
 
     #icons {
+      position: absolute;
+      top: 0;
+      bottom: @btmBar;
+      width: 50px;
+//      background-color: red;
+      text-align: center;
+      padding-top: 15px;
+
+      .black {
+        color: black;
+      }
 
       .ptv {
         width: 30px;
         height: 30px;
-        display: inline-block;
+//        display: inline-block;
         background-repeat: no-repeat;
         background-position: center;
         background-size: 30px;
+        margin: 5px auto;
 
         &.train {
          background-image: url('images/iconTrain.png');
@@ -301,20 +331,11 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
 
+    background-color: @dark;
 
   }
 
-  .interest {
-    font-size: 20px;
-  }
 
-  h1 {
-    font-size: 40px;
-    text-shadow: 2px 2px black;
-
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-  }
 }
 
 

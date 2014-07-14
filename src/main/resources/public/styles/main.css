@@ -2099,9 +2099,6 @@ body.open #main {
   -o-transform: translate3d(250px, 0px, 0px);
   transform: translate3d(250px, 0px, 0px);
 }
-body.open #main #topBar h1 {
-  color: red;
-}
 body.open #shield {
   display: block;
 }
@@ -2144,7 +2141,7 @@ body.open #shield {
   bottom: 60px;
   right: 0;
   height: 200%;
-  background-color: pink;
+  background-color: #ffffff;
   color: #ffffff;
   -webkit-transition: top 0.3s ease-in-out 0s;
   -moz-transition: top 0.3s ease-in-out 0s;
@@ -2152,18 +2149,46 @@ body.open #shield {
   transition: top 0.3s ease-in-out 0s;
 }
 #content #contentTop {
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 50%;
+}
+#content #contentTop .interest {
+  padding: 10px 0;
+}
+#content #contentTop h1 {
+  font-size: 40px;
+  text-shadow: 2px 2px black;
+  margin: 10px 0;
+  padding: 0;
+}
+#content #contentTop .tag {
+  padding: 5px;
+  border: 1px solid white;
+  margin-right: 5px;
 }
 #content #contentTop .wrapper {
   padding: 15px;
+  margin-left: 50px;
+}
+#content #contentTop #icons {
+  position: absolute;
+  top: 0;
+  bottom: 60px;
+  width: 50px;
+  text-align: center;
+  padding-top: 15px;
+}
+#content #contentTop #icons .black {
+  color: black;
 }
 #content #contentTop #icons .ptv {
   width: 30px;
   height: 30px;
-  display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 30px;
+  margin: 5px auto;
 }
 #content #contentTop #icons .ptv.train {
   background-image: url('images/iconTrain.png');
@@ -2180,15 +2205,7 @@ body.open #shield {
   height: 50%;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-#content .interest {
-  font-size: 20px;
-}
-#content h1 {
-  font-size: 40px;
-  text-shadow: 2px 2px black;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  background-color: #080808;
 }
 .acceptOver,
 .rejectOver {
