@@ -12,38 +12,38 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
       geolocation.getLocation().then(function(data){
          var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
-//        var eventData = $http.get('events.json');
+//        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
+        var eventData = $http.get('events.json');
         eventData.then( function( result ) {
 
           angular.forEach(result.data, function( value, key ) {
 
             _this.events.push({
-              'title': value.title,
-              'description': value.description,
-              'date': value.eventDate,
+              'title': result.data[key].title,
+              'description': result.data[key].description,
+              'date': result.data[key].eventDate,
 
-              'type': value.type,
-              'ineventCategory': value.ineventCategory,
-              'tags': value.tag,
+              'type': result.data.type,
+              'ineventCategory': result.data[key].ineventCategory,
+              'tags': result.data[key].tag,
 
-              'images': value.imageURLs,
+              'images': result.data[key].imageURLs,
 
-              'priceKnown': value.priceKnown,
-              'isFree': value.isFree,
-              'price': value.price,
+              'priceKnown': result.data[key].priceKnown,
+              'isFree': result.data[key].isFree,
+              'price': result.data[key].price,
 
-              'venue': value.venue,
-              'location': value.location,
+              'venue': result.data[key].venue,
+              'location': result.data[key].location,
 
-              'train': value.nearestTrain,
-              'tram': value.nearestTram,
-              'bus': value.nearestBus,
+              'train': result.data[key].nearestTrain,
+              'tram': result.data[key].nearestTram,
+              'bus': result.data[key].nearestBus,
 
-              'link': value.link, //events victoria - use as second preference
-              'url': value.url, //event website - use as first preference
-              'email': value.contactEmail,
-              'phone': value.contactPhone
+              'link': result.data[key].link, //events victoria - use as second preference
+              'url': result.data[key].url, //event website - use as first preference
+              'email': result.data[key].contactEmail,
+              'phone': result.data[key].contactPhone
             });
           });
         });
