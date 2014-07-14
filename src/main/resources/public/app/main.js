@@ -109,7 +109,8 @@ inEvent.controller('mainController', [ '$scope', '$timeout', 'EventFactory', fun
   ];
   $scope.categoryModel = {
     excats: ["Live Music",
-      "Lifestyle"]
+      "Lifestyle",
+      "Food and Wine"]
   };
   $scope.excats = function() {
     return _.difference($scope.categories, $scope.categoryModel.excats);

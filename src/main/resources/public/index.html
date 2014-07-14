@@ -74,30 +74,41 @@
       </section>
 
       <section id="contentBottom">
-        <p>title: {{events[i].title}}</p>
-        <p>description: {{events[i].description}}</p>
-        <p>date: {{events[i].date}}</p>
-        <p>type: {{events[i].type}}</p>
-        <p>category: {{events[i].category}}</p>
-        <p>tags:
-          <span data-ng-repeat="tag in events[i].tags">{{tag}} </span>
-        </p>
-        <p>images: fudge the url</p>
-        <p>priceKnown: {{events[i].priceKnown}}</p>
-        <p>isFree: {{events[i].isFree}}</p>
-        <p>price: {{events[i].price}}</p>
-        <p>venue: {{events[i].venue}}</p>
-        <p>location: {{events[i].location}}</p>
-        <p>train: {{events[i].train}}</p>
-        <p>tram: {{events[i].tram}}</p>
-        <p>bus: {{events[i].bus}}</p>
-        <p>GMap Thumbnail:
-            <img border="0" src="//maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap
-            &markers=color:blue%7Clabel:S%7C{{events[i].location}}&markers=color:green%7Clabel:G%7C
-            {{events[i].bus.lat}},{{events[i].bus.lon}}
-            &markers=color:red%7Clabel:C%7C
-            {{events[i].tram.lat}},{{events[i].tram.lon}}">
-        </p>
+        <div class="wrapper">
+
+          <p>{{events[i].description}}</p>
+
+          <p data-ng-if="events[i].isFree">This is a free event.</p>
+
+          <p>
+          {{events[i].venue.name}}
+          {{events[i].venue.addressLine1}}
+          {{events[i].venue.addressLine2}}
+          {{events[i].venue.suburb}}
+          {{events[i].venue.postcode}}
+          </p>
+
+          <p data-ng-if="events[i].train">Closest train: {{events[i].train.location_name}}</p>
+          <p data-ng-if="events[i].tram">Closest tram: {{events[i].tram.location_name}}</p>
+          <p data-ng-if="events[i].bus">Closest bus: {{events[i].bus.location_name}}</p>
+
+        </div>
+
+
+
+
+        <!--<p>venue: {{events[i].venue}}</p>-->
+        <!--<p>location: {{events[i].location}}</p>-->
+        <!--<p>train: {{events[i].train}}</p>-->
+        <!--<p>tram: {{events[i].tram}}</p>-->
+        <!--<p>bus: {{events[i].bus}}</p>-->
+        <!--<p>GMap Thumbnail:-->
+            <!--<img border="0" src="//maps.googleapis.com/maps/api/staticmap?zoom=13&size=300x300&maptype=roadmap-->
+            <!--&markers=color:blue%7Clabel:S%7C{{events[i].location}}&markers=color:green%7Clabel:G%7C-->
+            <!--{{events[i].bus.lat}},{{events[i].bus.lon}}-->
+            <!--&markers=color:red%7Clabel:C%7C-->
+            <!--{{events[i].tram.lat}},{{events[i].tram.lon}}">-->
+        <!--</p>-->
 
 
 

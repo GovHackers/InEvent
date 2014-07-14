@@ -2209,6 +2209,12 @@ body.open #shield {
   overflow-x: hidden;
   background-color: #080808;
 }
+#content #contentBottom .wrapper {
+  padding: 15px;
+}
+#content #contentBottom .wrapper p {
+  font-size: 20px;
+}
 .acceptOver,
 .rejectOver {
   position: absolute;
