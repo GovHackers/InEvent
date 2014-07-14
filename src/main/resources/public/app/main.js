@@ -12,8 +12,8 @@ inEvent.factory( 'EventFactory', [ '$http', 'geolocation', function( $http, geol
       geolocation.getLocation().then(function(data){
         var coords = {lat:data.coords.latitude, long:data.coords.longitude};
 
-//        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
-        var eventData = $http.get('events.json');
+        var eventData = $http.get('http://' + location.hostname + ((location.port == 80 || 0 || undefined || null) ? '' : (':' + location.port)) + '/api/events/get_relevant?lat=' + coords.lat + '&lon=' + coords.long + '&query_set=' + i + '&excluded_cats=' + excats.join());
+//        var eventData = $http.get('events.json');
         eventData.then( function( result ) {
 
           angular.forEach(result.data, function( value, key ) {
