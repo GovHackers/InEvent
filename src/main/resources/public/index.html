@@ -34,8 +34,7 @@
     </div>
 
     <div id="content"
-         data-ng-swipe-left="reject()"
-         data-ng-swipe-right="save()">
+         data-ng-swipe-left="reject()">
 
       <section id="contentTop">
 
@@ -131,20 +130,22 @@
          data-ng-if="!expanded">
 
       <div id="no" data-ng-click="reject()">
-        <i class="fa fa-caret-square-o-left"></i>
-        <span>no</span>
+        <i class="fa fa-angle-left"></i>
+        <span>next</span>
       </div>
 
-      <div id="yes" data-ng-click="save()">
-        <span>yes</span>
-        <i class="fa fa-caret-square-o-right"></i>
-      </div>
+      <!--<div id="yes" data-ng-click="save()">-->
+        <!--<span>yes</span>-->
+        <!--<i class="fa fa-caret-square-o-right"></i>-->
+      <!--</div>-->
 
     </div>
 
 
     <div id="btmBar"
          data-ng-click="expand()">
+      <span data-ng-if="!expanded">more info</span>
+      <span data-ng-if="expanded">less info</span>
       <i data-ng-if="!expanded"
          class="fa fa-level-down"></i>
       <i data-ng-if="expanded"

@@ -2263,17 +2263,18 @@ body.open #shield {
   bottom: 60px;
   left: 15px;
   right: 15px;
-  height: 30px;
+  height: 60px;
 }
 #selection #no {
   float: left;
-  width: 20%;
+  width: 30%;
   height: 100%;
   font-family: 'fontawesome';
-  font-size: 15px;
-  color: red;
+  font-size: 20px;
+  color: white;
   text-align: left;
   padding: 10px;
+  line-height: 60px;
   -webkit-animation: bounce .5s 0s 5;
   -moz-animation: bounce .5s 0s 5;
   animation: bounce .5s 0s 5;
@@ -2370,6 +2371,9 @@ body.open #shield {
   font-size: 30px;
   color: #ffffff;
   padding: 0 15px;
+}
+#btmBar span {
+  font-size: 20px;
 }
 .expand {
   top: -100% !important;

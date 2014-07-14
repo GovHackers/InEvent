@@ -390,7 +390,7 @@ body {
   left: 15px;
   right: 15px;
 
-  height: @btmBar / 2;
+  height: @btmBar;
 
 //  background-color: pink;
 
@@ -398,15 +398,19 @@ body {
 
   #no {
     float: left;
-    width: 20%;
+    width: 30%;
     height: 100%;
 
     font-family: 'fontawesome';
-    font-size: 15px;
-    color: red;
+    font-size: 20px;
+    color: white;
 
     text-align: left;
     padding: 10px;
+
+//    background-color:pink;
+
+    line-height: @btmBar;
 
     -webkit-animation: bounce .5s 0s 5;
     -moz-animation: bounce .5s 0s 5;
@@ -486,7 +490,9 @@ body {
   color: @white;
   padding: 0 15px;
 
-
+  span {
+    font-size: 20px;
+  }
 }
 
 
