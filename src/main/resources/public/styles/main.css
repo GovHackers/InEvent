@@ -2229,8 +2229,10 @@ body.open #shield {
   display: block;
   width: 100%;
   padding: 15px;
-  background-color: pink;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #080808;
+  text-align: center;
+  font-size: 18px;
 }
 .acceptOver,
 .rejectOver {

@@ -79,7 +79,7 @@
 
           <p>{{events[i].venue.name}} <br/>
           {{events[i].venue.addressLine1}} <br/>
-          {{events[i].venue.addressLine2}} <br/>
+          {{events[i].venue.addressLine2}} <br ng-if="events[i].venue.addressLine2"/>
           {{events[i].venue.suburb}} <br/>
           {{events[i].venue.postcode}} </p>
 
@@ -88,7 +88,7 @@
           <p data-ng-if="events[i].bus"><span class="bus">Closest bus:</span> {{events[i].bus.location_name}}</p>
 
           <div class="website">
-            <a ng-href="{{events[i].url || events[i].link }}">event website</a>
+            <a ng-href="{{events[i].url || events[i].link }}" target="_blank">event website</a>
           </div>
 
         </div>
