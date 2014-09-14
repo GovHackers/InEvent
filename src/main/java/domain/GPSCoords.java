@@ -62,13 +62,4 @@ public class GPSCoords {
         return (deg * Math.PI / 180.0);
     }
 
-    /**
-     * Test case: expected distance 0.549km
-     * @param args
-     */
-    public static void main(String[] args) {
-        GPSCoords here = new GPSCoords(38.898556, -77.037852);
-        GPSCoords there = new GPSCoords(38.897147, -77.043934);
-        System.out.println(here.distanceFrom(there));
-    }
 }
