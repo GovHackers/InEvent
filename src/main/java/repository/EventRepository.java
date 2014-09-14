@@ -20,6 +20,8 @@ import java.util.Map;
 
 public class EventRepository {
 
+    public static final String EVENT_DATE = "eventDate";
+    public static final String NOW = "now";
     private Client client;
 
     private final static String INDEX_NAME = "inevent";
@@ -36,7 +38,7 @@ public class EventRepository {
 
 
 
-        GaussDecayFunctionBuilder eventDateFunction = ScoreFunctionBuilders.gaussDecayFunction("eventDate", EVENT_DATE_SCALE);
+        GaussDecayFunctionBuilder eventDateFunction = ScoreFunctionBuilders.gaussDecayFunction(EVENT_DATE, EVENT_DATE_SCALE);
         GaussDecayFunctionBuilder locationFunction = ScoreFunctionBuilders.gaussDecayFunction("location", coords.getLocation(), LOCATION_SCALE);
 
         FunctionScoreQueryBuilder queryBuilder = QueryBuilders.functionScoreQuery()
@@ -47,7 +49,7 @@ public class EventRepository {
                 .boost(1000);
 
         BoolFilterBuilder exclusionFilter = FilterBuilders.boolFilter().mustNot(FilterBuilders.termFilter("ineventCategory", "zzz"));
-        exclusionFilter.must(FilterBuilders.rangeFilter("eventDate").gt("now"));
+        exclusionFilter.must(FilterBuilders.rangeFilter(EVENT_DATE).gt(NOW));
         if(filter != null){
             for(String exclusion : filter.getExclusions()) {
                 exclusionFilter.mustNot(FilterBuilders.termFilter("event.ineventCategory", exclusion));
