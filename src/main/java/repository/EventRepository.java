@@ -47,6 +47,7 @@ public class EventRepository {
                 .boost(1000);
 
         BoolFilterBuilder exclusionFilter = FilterBuilders.boolFilter().mustNot(FilterBuilders.termFilter("ineventCategory", "zzz"));
+        exclusionFilter.must(FilterBuilders.rangeFilter("eventDate").gt("now"));
         if(filter != null){
             for(String exclusion : filter.getExclusions()) {
                 exclusionFilter.mustNot(FilterBuilders.termFilter("event.ineventCategory", exclusion));
