@@ -4,6 +4,6 @@ VERSION="1.0-SNAPSHOT"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-cd $DIR/InEvent/target
+cd $DIR/target
 
 java -jar inevent-$VERSION.jar
